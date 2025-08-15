@@ -18,8 +18,8 @@ export function Header() {
               <div className="w-16 h-16 relative">
                 <Image src="/logo.svg" alt="DBG Gurukulam Logo" width={64} height={64} className="object-contain" />
               </div>
-              <div className="hidden sm:block">
-                <h1 className="text-rishi text-xl lg:text-2xl text-temple-stone leading-tight text-left">
+              <div className="block">
+                <h1 className="text-rishi text-lg sm:text-xl lg:text-2xl text-temple-stone leading-tight text-left">
                   Divya Bihar Global
                   <br />
                   <span className="text-peacock-teal">Gurukulam</span>
