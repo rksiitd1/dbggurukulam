@@ -3,9 +3,9 @@ import Image from "next/image"
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-slate-50 to-slate-100 text-slate-700 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-gray-900 to-slate-800 text-slate-300 relative overflow-hidden">
       {/* Decorative background pattern */}
-      <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/20 to-teal-500/20" />
         <div
           className="absolute inset-0"
@@ -16,7 +16,7 @@ export function Footer() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 py-20">
         {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* School Info */}
@@ -25,25 +25,25 @@ export function Footer() {
               <div className="w-10 h-10 relative">
                 <Image src="/logo.svg" alt="DBG Gurukulam Logo" width={40} height={40} className="object-contain" />
               </div>
-              <h3 className="font-rishi text-2xl bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
+                            <h3 className="font-rishi text-2xl bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
                 Divya Bihar Global Gurukulam
               </h3>
             </div>
-            <p className="font-scribe text-slate-600 mb-6 leading-relaxed">
+                        <p className="font-scribe text-slate-400 mb-6 leading-relaxed">
               Where Ancient Soul Meets Modern Mind. Nurturing young minds through the timeless wisdom of our heritage
               while preparing them for tomorrow's challenges.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-slate-600">
-                <MapPin className="w-5 h-5 text-blue-600" />
+                            <div className="flex items-center gap-3 text-slate-400">
+                <MapPin className="w-5 h-5 text-blue-400" />
                 <span className="font-scribe">Bihar, India</span>
               </div>
-              <div className="flex items-center gap-3 text-slate-600">
-                <Phone className="w-5 h-5 text-blue-600" />
+                            <div className="flex items-center gap-3 text-slate-400">
+                <Phone className="w-5 h-5 text-blue-400" />
                 <span className="font-scribe">+91 9262536295</span>
               </div>
-              <div className="flex items-center gap-3 text-slate-600">
-                <Mail className="w-5 h-5 text-blue-600" />
+                            <div className="flex items-center gap-3 text-slate-400">
+                <Mail className="w-5 h-5 text-blue-400" />
                 <span className="font-scribe">info@dbggurukulam.edu.in</span>
               </div>
             </div>
@@ -51,7 +51,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-rishi text-lg text-blue-600 mb-4">Quick Links</h4>
+                        <h4 className="font-rishi text-lg text-blue-400 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {[
                 "The Mission (About)",
@@ -62,7 +62,7 @@ export function Footer() {
                 "Contact Us",
               ].map((link) => (
                 <li key={link}>
-                  <a href="#" className="font-scribe text-slate-600 hover:text-blue-600 transition-colors duration-300">
+                                    <a href="#" className="font-scribe text-slate-400 hover:text-blue-400 transition-colors duration-300">
                     {link}
                   </a>
                 </li>
@@ -72,7 +72,7 @@ export function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="font-rishi text-lg text-blue-600 mb-4">Connect With Us</h4>
+                        <h4 className="font-rishi text-lg text-blue-400 mb-4">Connect With Us</h4>
             <div className="flex gap-4 mb-6">
               {[
                 { icon: Facebook, label: "Facebook" },
@@ -80,13 +80,13 @@ export function Footer() {
                 { icon: Instagram, label: "Instagram" },
                 { icon: Youtube, label: "YouTube" },
               ].map(({ icon: Icon, label }) => (
-                <a
+                                <a
                   key={label}
                   href="#"
-                  className="w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 group shadow-sm"
+                  className="w-10 h-10 bg-slate-700/50 rounded-full flex items-center justify-center hover:bg-blue-500 transition-all duration-300 group"
                   aria-label={label}
                 >
-                  <Icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 text-slate-600 group-hover:text-white" />
+                                    <Icon className="w-5 h-5 text-slate-300 group-hover:text-white transition-colors duration-300" />
                 </a>
               ))}
             </div>
@@ -98,16 +98,16 @@ export function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="border-t border-slate-300 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="font-scribe text-slate-500 text-sm">
+                <div className="border-t border-slate-700 pt-8 mt-12">
+                    <div className="flex flex-col sm:flex-row justify-between items-center gap-4 w-full">
+            <div className="font-scribe text-slate-500 text-sm text-center sm:text-left">
               © 2025 Divya Bihar Global Gurukulam. All rights reserved.
             </div>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="font-scribe text-slate-500 hover:text-blue-600 transition-colors">
+                            <a href="#" className="font-scribe text-slate-500 hover:text-blue-400 transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="font-scribe text-slate-500 hover:text-blue-600 transition-colors">
+                            <a href="#" className="font-scribe text-slate-500 hover:text-blue-400 transition-colors">
                 Terms of Service
               </a>
             </div>
