@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -20,9 +21,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* School Info */}
           <div className="lg:col-span-2">
-            <h3 className="font-rishi text-2xl bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent mb-4">
-              Divya Bihar Global Gurukulam
-            </h3>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 relative">
+                <Image src="/logo.svg" alt="DBG Gurukulam Logo" width={40} height={40} className="object-contain" />
+              </div>
+              <h3 className="font-rishi text-2xl bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
+                Divya Bihar Global Gurukulam
+              </h3>
+            </div>
             <p className="font-scribe text-slate-600 mb-6 leading-relaxed">
               Where Ancient Soul Meets Modern Mind. Nurturing young minds through the timeless wisdom of our heritage
               while preparing them for tomorrow's challenges.

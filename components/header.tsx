@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -14,11 +15,11 @@ export function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-marigold-gold to-peacock-teal rounded-full flex items-center justify-center animate-float">
-                <span className="text-manuscript font-serif font-bold text-xl">ॐ</span>
+              <div className="w-16 h-16 relative">
+                <Image src="/logo.svg" alt="DBG Gurukulam Logo" width={64} height={64} className="object-contain" />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-rishi text-xl lg:text-2xl text-temple-stone leading-tight">
+                <h1 className="text-rishi text-xl lg:text-2xl text-temple-stone leading-tight text-left">
                   Divya Bihar Global
                   <br />
                   <span className="text-peacock-teal">Gurukulam</span>
