@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [particleCount, setParticleCount] = useState(20);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500)
+    setParticleCount(window.innerWidth < 640 ? 10 : 20);
     return () => clearTimeout(timer)
   }, [])
 
@@ -24,7 +26,7 @@ export function HeroSection() {
       {/* Animated Particles Overlay */}
       <div className="absolute inset-0 z-10">
         <div className="particles-container">
-          {[...Array(window.innerWidth < 640 ? 10 : 20)].map((_, i) => (
+          {[...Array(particleCount)].map((_, i) => (
             <div
               key={i}
               className="particle"
