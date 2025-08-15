@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: "Divya Bihar Global Gurukulam - Where Ancient Soul Meets Modern Mind",
   description: "A digital mandir of knowledge combining ancient Indian wisdom with modern education",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 }
 
 export default function RootLayout({
