@@ -15,24 +15,16 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          poster="/gurukulam-courtyard.png"
-        >
+        <video autoPlay muted loop playsInline className="w-full h-full object-cover" poster="/gurukulam-courtyard.png">
           <source src="/placeholder.mp4" type="video/mp4" />
         </video>
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-temple-stone/40"></div>
+        <div className="absolute inset-0 bg-temple-stone/50 sm:bg-temple-stone/40"></div>
       </div>
 
       {/* Animated Particles Overlay */}
       <div className="absolute inset-0 z-10">
         <div className="particles-container">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(window.innerWidth < 640 ? 10 : 20)].map((_, i) => (
             <div
               key={i}
               className="particle"
@@ -54,7 +46,7 @@ export function HeroSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h1 className="text-rishi text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-manuscript mb-6 leading-tight">
+          <h1 className="text-rishi text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-manuscript mb-4 sm:mb-6 leading-tight">
             Divya Bihar Global
             <br />
             <span className="text-marigold-gold">Gurukulam</span>
@@ -67,7 +59,7 @@ export function HeroSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="text-scribe text-xl sm:text-2xl md:text-3xl text-manuscript/90 mb-12 font-light">
+          <p className="text-scribe text-lg sm:text-xl md:text-3xl text-manuscript/90 mb-8 sm:mb-12 font-light">
             Where Ancient Soul Meets Modern Mind
           </p>
         </div>
@@ -78,22 +70,22 @@ export function HeroSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
             <Button
               size="lg"
-              className="group bg-marigold-gold hover:bg-marigold-gold/90 text-temple-stone font-semibold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-marigold-gold/30 hover:scale-105 min-w-[280px]"
+              className="group bg-marigold-gold hover:bg-marigold-gold/90 text-temple-stone font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-marigold-gold/30 hover:scale-105 w-full sm:min-w-[280px] max-w-[320px]"
             >
               <span className="relative z-10">The Path of Foundation</span>
-              <span className="block text-sm font-normal opacity-80">(Gurukulam N–8)</span>
+              <span className="hidden xs:block text-sm font-normal opacity-80">(Gurukulam N–8)</span>
               <div className="absolute inset-0 bg-gradient-to-r from-marigold-gold to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
             </Button>
 
             <Button
               size="lg"
-              className="group bg-peacock-teal hover:bg-peacock-teal/90 text-manuscript font-semibold px-8 py-4 text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-peacock-teal/30 hover:scale-105 min-w-[280px]"
+              className="group bg-peacock-teal hover:bg-peacock-teal/90 text-manuscript font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-peacock-teal/30 hover:scale-105 w-full sm:min-w-[280px] max-w-[320px]"
             >
               <span className="relative z-10">The Path of Excellence</span>
-              <span className="block text-sm font-normal opacity-80">(Shri Classes 9–12)</span>
+              <span className="hidden xs:block text-sm font-normal opacity-80">(Shri Classes 9–12)</span>
               <div className="absolute inset-0 bg-gradient-to-r from-peacock-teal to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
             </Button>
           </div>
