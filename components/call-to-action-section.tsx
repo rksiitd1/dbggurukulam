@@ -67,7 +67,7 @@ export function CallToActionSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-rishi text-4xl sm:text-3xl lg:text-6xl text-temple-stone mb-4 sm:mb-6">
+          <h2 className="text-rishi text-2xl sm:text-3xl lg:text-6xl text-temple-stone mb-4 sm:mb-6">
             The <span className="text-marigold-gold">Aahvan</span>
           </h2>
           <p className="text-scribe text-base sm:text-lg lg:text-xl text-temple-stone/80 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
@@ -89,7 +89,7 @@ export function CallToActionSection() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Card Container */}
-              <div className="relative h-80 sm:h-96 lg:h-[500px] bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-gray-200 group-hover:border-marigold-gold/30 transition-all duration-500">
+              <div className="relative h-[512px] sm:h-96 lg:h-[500px] bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-gray-200 group-hover:border-marigold-gold/30 transition-all duration-500">
                 {/* Animated Background Pattern */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                   {card.pattern === "lotus" && (
