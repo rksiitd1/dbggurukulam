@@ -22,36 +22,36 @@ export function Footer() {
           {/* School Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 relative">
-                <Image src="/logo.svg" alt="DBG Gurukulam Logo" width={40} height={40} className="object-contain" />
+              <div className="w-20 h-20 relative">
+                <Image src="/logo.svg" alt="DBG Gurukulam Logo" width={80} height={80} className="object-contain" />
               </div>
-              <h3 className="font-rishi text-2xl bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+              <h3 className="font-rishi text-3xl bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
                 Divya Bihar Global Gurukulam
               </h3>
             </div>
-            <p className="font-scribe text-slate-400 mb-6 leading-relaxed">
+            <p className="font-scribe text-slate-400 mb-6 leading-relaxed text-lg">
               Where Ancient Soul Meets Modern Mind. Nurturing young minds through the timeless wisdom of our heritage
               while preparing them for tomorrow's challenges.
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-slate-400">
                 <MapPin className="w-5 h-5 text-blue-400" />
-                <span className="font-scribe">Bihar, India</span>
+                <span className="font-scribe text-lg">Bihar, India</span>
               </div>
               <div className="flex items-center gap-3 text-slate-400">
                 <Phone className="w-5 h-5 text-blue-400" />
-                <span className="font-scribe">+91 9262536295</span>
+                <span className="font-scribe text-lg">+91 9262536295</span>
               </div>
               <div className="flex items-center gap-3 text-slate-400">
                 <Mail className="w-5 h-5 text-blue-400" />
-                <span className="font-scribe">info@dbggurukulam.edu.in</span>
+                <span className="font-scribe text-lg">info@dbggurukulam.edu.in</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-rishi text-lg text-blue-400 mb-4">Quick Links</h4>
+            <h4 className="font-rishi text-xl text-blue-400 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {[
                 "The Mission (About)",
@@ -62,7 +62,10 @@ export function Footer() {
                 "Contact Us",
               ].map((link) => (
                 <li key={link}>
-                  <a href="#" className="font-scribe text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                  <a
+                    href="#"
+                    className="font-scribe text-slate-400 hover:text-blue-400 transition-colors duration-300 text-lg"
+                  >
                     {link}
                   </a>
                 </li>
@@ -72,7 +75,7 @@ export function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="font-rishi text-lg text-blue-400 mb-4">Connect With Us</h4>
+            <h4 className="font-rishi text-xl text-blue-400 mb-4">Connect With Us</h4>
             <div className="flex gap-4 mb-6">
               {[
                 { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61573604582292" },
@@ -92,7 +95,7 @@ export function Footer() {
                 </a>
               ))}
             </div>
-            <div className="font-scribe text-slate-500 text-sm">
+            <div className="font-scribe text-slate-500 text-base">
               <p className="mb-2">Follow our journey of knowledge and wisdom</p>
               <p className="italic">"विद्या ददाति विनयं" - Knowledge gives humility</p>
             </div>
@@ -102,10 +105,10 @@ export function Footer() {
         {/* Bottom section */}
         <div className="border-t border-slate-700 pt-8 mt-12">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 w-full">
-            <div className="font-scribe text-slate-500 text-sm text-center sm:text-left">
+            <div className="font-scribe text-slate-500 text-base text-center sm:text-left">
               © 2025 Divya Bihar Global Gurukulam. All rights reserved.
             </div>
-            <div className="flex gap-6 text-sm">
+            <div className="flex gap-6 text-base">
               <a href="#" className="font-scribe text-slate-500 hover:text-blue-400 transition-colors">
                 Privacy Policy
               </a>
