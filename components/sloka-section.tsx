@@ -27,7 +27,7 @@ export function SlokaSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-6 md:py-8 overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50"
+      className="relative py-8 md:py-11 overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50"
     >
       {/* Ethereal background elements */}
       <div className="absolute inset-0">
