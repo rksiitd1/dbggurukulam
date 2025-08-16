@@ -2,24 +2,62 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [particleCount, setParticleCount] = useState(20)
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 500)
+    const timer = setTimeout(() => setIsVisible(true), 125)
     setParticleCount(window.innerWidth < 640 ? 10 : 20)
+
+    const img = new window.Image()
+    img.onload = () => setImageLoaded(true)
+    img.src = "/gurukulam-courtyard.jpg"
+
     return () => clearTimeout(timer)
   }, [])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover" poster="/gurukulam-courtyard.jpg">
+        {/* Gradient background shown while image loads */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br from-temple-stone via-slate-800 to-temple-stone transition-opacity duration-500 ${imageLoaded ? "opacity-0" : "opacity-100"}`}
+        />
+
+        {/* Optimized background image */}
+        <div
+          className={`absolute inset-0 transition-opacity duration-500 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+        >
+          <Image
+            src="/gurukulam-courtyard.jpg"
+            alt="DBG Gurukulam Courtyard"
+            fill
+            className="object-cover"
+            priority
+            quality={85}
+            onLoad={() => setImageLoaded(true)}
+          />
+        </div>
+
+        {/* Video overlay (optional enhancement) */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className={`w-full h-full object-cover transition-opacity duration-500 ${videoLoaded ? "opacity-30" : "opacity-0"}`}
+          onLoadedData={() => setVideoLoaded(true)}
+          poster="/gurukulam-courtyard.jpg"
+        >
           <source src="/placeholder.mp4" type="video/mp4" />
         </video>
+
+        {/* Enhanced overlay with better contrast */}
         <div className="absolute inset-0 bg-temple-stone/50 sm:bg-temple-stone/40"></div>
       </div>
 
@@ -44,7 +82,7 @@ export function HeroSection() {
       <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         {/* Main Headline */}
         <div
-          className={`transition-all duration-2000 ease-out ${
+          className={`transition-all duration-500 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -57,7 +95,7 @@ export function HeroSection() {
 
         {/* Tagline */}
         <div
-          className={`transition-all duration-2000 ease-out delay-500 ${
+          className={`transition-all duration-500 ease-out delay-125 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -68,7 +106,7 @@ export function HeroSection() {
 
         {/* Call-to-Action Buttons */}
         <div
-          className={`transition-all duration-2000 ease-out delay-1000 ${
+          className={`transition-all duration-500 ease-out delay-250 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
