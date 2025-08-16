@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
-  const [particleCount, setParticleCount] = useState(20);
+  const [particleCount, setParticleCount] = useState(20)
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500)
-    setParticleCount(window.innerWidth < 640 ? 10 : 20);
+    setParticleCount(window.innerWidth < 640 ? 10 : 20)
     return () => clearTimeout(timer)
   }, [])
 
@@ -77,8 +77,10 @@ export function HeroSection() {
               size="lg"
               className="group bg-marigold-gold hover:bg-marigold-gold/90 text-temple-stone font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-marigold-gold/30 hover:scale-105 w-full sm:min-w-[280px] max-w-[320px]"
             >
-              <span className="relative z-10">The Path of Foundation</span>
-              <span className="hidden xs:block text-sm font-normal opacity-80">(Gurukulam N–8)</span>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+                <span className="text-xs sm:text-sm font-bold sm:font-normal order-1 sm:order-2">Gurukulam N–8</span>
+                <span className="relative z-10 order-2 sm:order-1">The Path of Foundation</span>
+              </div>
               <div className="absolute inset-0 bg-gradient-to-r from-marigold-gold to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
             </Button>
 
@@ -86,8 +88,12 @@ export function HeroSection() {
               size="lg"
               className="group bg-peacock-teal hover:bg-peacock-teal/90 text-manuscript font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-peacock-teal/30 hover:scale-105 w-full sm:min-w-[280px] max-w-[320px]"
             >
-              <span className="relative z-10">The Path of Excellence</span>
-              <span className="hidden xs:block text-sm font-normal opacity-80">(Shri Classes 9–12)</span>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+                <span className="text-xs sm:text-sm font-bold sm:font-normal order-1 sm:order-2">
+                  Shri Classes 9–12
+                </span>
+                <span className="relative z-10 order-2 sm:order-1">The Path of Excellence</span>
+              </div>
               <div className="absolute inset-0 bg-gradient-to-r from-peacock-teal to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
             </Button>
           </div>
