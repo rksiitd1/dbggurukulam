@@ -17,7 +17,7 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover" poster="/gurukulam-courtyard.png">
+        <video autoPlay muted loop playsInline className="w-full h-full object-cover" poster="/gurukulam-courtyard.jpg">
           <source src="/placeholder.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-temple-stone/50 sm:bg-temple-stone/40"></div>
