@@ -145,7 +145,7 @@ export function EducationalJourneySection() {
         {/* Call to Action */}
         <div className="text-center mt-16">
           <div className="inline-flex items-center gap-4 bg-card border border-border rounded-full px-8 py-4 shadow-lg">
-            <Users className="w-15 h-15 md:w-5 md:h-5 text-primary" />
+            <Users className="w-15 h-15 md:w-5 md:h-5 max-w-8 max-h-8 text-primary" />
             <span className="text-foreground font-medium">Ready to begin your journey?</span>
             <button className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-colors duration-300">
               Explore Admissions

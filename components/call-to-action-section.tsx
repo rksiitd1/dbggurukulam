@@ -77,11 +77,11 @@ export function CallToActionSection() {
         </div>
 
         {/* Action Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 justify-items-center">
           {actionCards.map((card, index) => (
             <div
               key={card.id}
-              className={`group relative transform transition-all duration-700 ease-out hover:scale-105 ${
+              className={`group relative transform transition-all duration-700 ease-out hover:scale-105 w-full max-w-80 sm:max-w-none ${
                 hoveredCard === card.id ? "translate-y-[-20px]" : ""
               }`}
               onMouseEnter={() => setHoveredCard(card.id)}
@@ -89,7 +89,7 @@ export function CallToActionSection() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Card Container */}
-              <div className="relative h-80 sm:h-96 lg:h-[500px] bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-gray-200 group-hover:border-marigold-gold/30 transition-all duration-500">
+              <div className="relative h-[512px] sm:h-96 lg:h-[500px] bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-gray-200 group-hover:border-marigold-gold/30 transition-all duration-500">
                 {/* Animated Background Pattern */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                   {card.pattern === "lotus" && (
@@ -179,10 +179,10 @@ export function CallToActionSection() {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 p-4 sm:p-6 lg:p-8 h-full flex flex-col">
+                <div className="relative z-10 p-8 sm:p-6 lg:p-8 h-full flex flex-col">
                   {/* Icon */}
                   <div
-                    className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 transition-all duration-300 ${
+                    className={`w-16 h-16 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-6 sm:mb-6 transition-all duration-300 ${
                       card.color === "marigold-gold"
                         ? "bg-marigold-gold text-temple-stone"
                         : card.color === "peacock-teal"
@@ -190,13 +190,13 @@ export function CallToActionSection() {
                           : "bg-temple-stone text-manuscript"
                     } ${hoveredCard === card.id ? "scale-110 shadow-lg" : ""}`}
                   >
-                    <div className="scale-75 sm:scale-90 lg:scale-100">{card.icon}</div>
+                    <div className="sm:scale-90 lg:scale-100">{card.icon}</div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-rishi text-xl sm:text-2xl lg:text-3xl text-temple-stone mb-2">{card.title}</h3>
+                  <h3 className="text-rishi text-2xl sm:text-2xl lg:text-3xl text-temple-stone mb-3">{card.title}</h3>
                   <p
-                    className={`text-scribe text-sm sm:text-base font-semibold mb-3 sm:mb-4 ${
+                    className={`text-scribe text-base sm:text-base font-semibold mb-4 sm:mb-4 ${
                       card.color === "marigold-gold"
                         ? "text-marigold-gold"
                         : card.color === "peacock-teal"
@@ -208,13 +208,13 @@ export function CallToActionSection() {
                   </p>
 
                   {/* Description */}
-                  <p className="text-scribe text-sm sm:text-base text-temple-stone/80 leading-relaxed mb-4 sm:mb-6 lg:mb-8 flex-grow">
+                  <p className="text-scribe text-base sm:text-base text-temple-stone/80 leading-relaxed mb-6 sm:mb-6 lg:mb-8 flex-grow">
                     {card.description}
                   </p>
 
                   {/* CTA Button */}
                   <Button
-                    className={`w-full text-sm sm:text-base transition-all duration-300 ${
+                    className={`w-full text-base sm:text-base transition-all duration-300 py-3 ${
                       card.color === "marigold-gold"
                         ? "bg-marigold-gold hover:bg-marigold-gold/90 text-temple-stone"
                         : card.color === "peacock-teal"

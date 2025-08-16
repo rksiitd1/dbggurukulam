@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-temple-stone via-slate-900 to-temple-stone text-manuscript relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-manuscript relative overflow-hidden">
       <div className="absolute inset-0">
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-marigold-gold/5 via-transparent to-peacock-teal/5" />
@@ -85,18 +85,18 @@ export function Footer() {
           {/* School Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-24 h-40 md:h-24 relative group">
+              <div className="w-16 h-16 relative group flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-marigold-gold/20 to-peacock-teal/20 rounded-full blur-sm group-hover:blur-none transition-all duration-500" />
                 <Image
                   src="/logo.svg"
                   alt="DBG Gurukulam Logo"
-                  width={96}
-                  height={96}
+                  width={64}
+                  height={64}
                   className="object-contain relative z-10 drop-shadow-lg"
                 />
               </div>
               <div>
-                <h3 className="font-rishi text-4xl text-marigold-gold bg-gradient-to-r from-marigold-gold via-yellow-400 to-marigold-gold bg-clip-text hover:text-transparent transition-all duration-300 mb-2">
+                <h3 className="font-rishi text-4xl text-marigold-gold bg-gradient-to-r from-marigold-gold via-yellow-400 to-marigold-gold bg-clip-text transition-all duration-300 mb-2">
                   Divya Bihar Global Gurukulam
                 </h3>
                 <div className="w-32 h-0.5 bg-gradient-to-r from-marigold-gold to-peacock-teal rounded-full" />
