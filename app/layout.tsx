@@ -18,7 +18,8 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Divya Bihar Global Gurukulam - Where Ancient Soul Meets Modern Mind",
-  description: "A digital mandir of knowledge combining ancient Indian wisdom with modern education",
+  description:
+    "A digital mandir of knowledge combining ancient Indian wisdom with modern education. Located in Raghopur, Supaul District, Bihar, India - 852111",
   generator: "v0.app",
   icons: {
     icon: "/favicon.ico",

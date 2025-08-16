@@ -36,7 +36,7 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-slate-400">
                 <MapPin className="w-5 h-5 text-blue-400" />
-                <span className="font-scribe text-lg">Bihar, India</span>
+                <span className="font-scribe text-lg">Raghopur, Supaul District, Bihar, India - 852111</span>
               </div>
               <div className="flex items-center gap-3 text-slate-400">
                 <Phone className="w-5 h-5 text-blue-400" />
