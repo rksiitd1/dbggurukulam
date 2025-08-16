@@ -85,7 +85,7 @@ export function Footer() {
           {/* School Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-24 h-24 relative group">
+              <div className="w-24 h-40 md:h-24 relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-marigold-gold/20 to-peacock-teal/20 rounded-full blur-sm group-hover:blur-none transition-all duration-500" />
                 <Image
                   src="/logo.svg"
