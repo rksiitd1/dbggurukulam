@@ -25,7 +25,7 @@ export function Footer() {
               <div className="w-20 h-20 relative">
                 <Image src="/logo.svg" alt="DBG Gurukulam Logo" width={80} height={80} className="object-contain" />
               </div>
-              <h3 className="font-rishi text-3xl bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+              <h3 className="font-rishi text-4xl bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
                 Divya Bihar Global Gurukulam
               </h3>
             </div>
