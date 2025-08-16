@@ -117,7 +117,7 @@ export function Footer() {
                 <div className="w-10 h-10 bg-gradient-to-br from-marigold-gold/20 to-peacock-teal/20 rounded-full flex items-center justify-center group-hover:from-marigold-gold/30 group-hover:to-peacock-teal/30 transition-all duration-300">
                   <Phone className="w-5 h-5 text-peacock-teal" />
                 </div>
-                <span className="font-scribe text-lg">+91 9262536295</span>
+                <span className="font-scribe text-lg">+91 92625 36295</span>
               </div>
               <div className="flex items-center gap-4 text-manuscript/80 group hover:text-marigold-gold transition-colors duration-300">
                 <div className="w-10 h-10 bg-gradient-to-br from-marigold-gold/20 to-peacock-teal/20 rounded-full flex items-center justify-center group-hover:from-marigold-gold/30 group-hover:to-peacock-teal/30 transition-all duration-300">
