@@ -38,6 +38,7 @@ export default function ResultActions({
   const handleDownload = async () => {
     setIsDownloading(true)
 
+    let reportCard: HTMLElement | null = null
     try {
       const isMobile = window.innerWidth <= 768
       console.log("[v0] Mobile detection:", isMobile)
@@ -45,8 +46,6 @@ export default function ResultActions({
       console.log("[v0] Student marks available:", !!studentMarks)
 
       const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([import("html2canvas"), import("jspdf")])
-
-      let reportCard: HTMLElement | null = null
 
       if (isMobile && student && studentMarks && examType && examPeriod && academicYear) {
         console.log("[v0] Using mobile download component")
@@ -106,6 +105,7 @@ export default function ResultActions({
       }
 
       console.log("[v0] Capturing with html2canvas")
+      reportCard.setAttribute("data-h2c-target", "1")
       const canvas = await html2canvas(reportCard, {
         scale: 2,
         useCORS: true,
@@ -115,159 +115,38 @@ export default function ResultActions({
         height: reportCard.scrollHeight,
         onclone: (clonedDoc: Document) => {
           try {
-            const style = clonedDoc.createElement("style")
-            style.setAttribute("data-h2c-fallback", "true")
-            style.textContent = `
-              :root {
-                --background: hsl(0 0% 100%);
-                --foreground: hsl(222.2 84% 4.9%);
-                --card: hsl(0 0% 100%);
-                --card-foreground: hsl(222.2 84% 4.9%);
-                --popover: hsl(0 0% 100%);
-                --popover-foreground: hsl(222.2 84% 4.9%);
-                --primary: hsl(222.2 47.4% 11.2%);
-                --primary-foreground: hsl(210 40% 98%);
-                --secondary: hsl(210 40% 96%);
-                --secondary-foreground: hsl(222.2 47.4% 11.2%);
-                --muted: hsl(210 40% 96%);
-                --muted-foreground: hsl(215.4 16.3% 46.9%);
-                --accent: hsl(210 40% 96%);
-                --accent-foreground: hsl(222.2 47.4% 11.2%);
-                --destructive: hsl(0 84.2% 60.2%);
-                --destructive-foreground: hsl(210 40% 98%);
-                --border: hsl(214.3 31.8% 91.4%);
-                --input: hsl(214.3 31.8% 91.4%);
-                --ring: hsl(222.2 84% 4.9%);
-                --chart-1: hsl(12 76% 61%);
-                --chart-2: hsl(173 58% 39%);
-                --chart-3: hsl(197 37% 24%);
-                --chart-4: hsl(43 74% 66%);
-                --chart-5: hsl(27 87% 67%);
-                --sidebar: hsl(0 0% 100%);
-                --sidebar-foreground: hsl(222.2 84% 4.9%);
-                --sidebar-primary: hsl(222.2 47.4% 11.2%);
-                --sidebar-primary-foreground: hsl(210 40% 98%);
-                --sidebar-accent: hsl(210 40% 96%);
-                --sidebar-accent-foreground: hsl(222.2 47.4% 11.2%);
-                --sidebar-border: hsl(214.3 31.8% 91.4%);
-                --sidebar-ring: hsl(222.2 84% 4.9%);
-              }
-              .dark {
-                --background: hsl(222.2 84% 4.9%);
-                --foreground: hsl(210 40% 98%);
-                --card: hsl(222.2 84% 4.9%);
-                --card-foreground: hsl(210 40% 98%);
-                --popover: hsl(222.2 84% 4.9%);
-                --popover-foreground: hsl(210 40% 98%);
-                --primary: hsl(210 40% 98%);
-                --primary-foreground: hsl(222.2 47.4% 11.2%);
-                --secondary: hsl(217.2 32.6% 17.5%);
-                --secondary-foreground: hsl(210 40% 98%);
-                --muted: hsl(217.2 32.6% 17.5%);
-                --muted-foreground: hsl(215 20.2% 65.1%);
-                --accent: hsl(217.2 32.6% 17.5%);
-                --accent-foreground: hsl(210 40% 98%);
-                --destructive: hsl(0 62.8% 30.6%);
-                --destructive-foreground: hsl(210 40% 98%);
-                --border: hsl(217.2 32.6% 17.5%);
-                --input: hsl(217.2 32.6% 17.5%);
-                --ring: hsl(212.7 26.8% 83.9%);
-                --chart-1: hsl(220 70% 50%);
-                --chart-2: hsl(160 60% 45%);
-                --chart-3: hsl(30 80% 55%);
-                --chart-4: hsl(280 65% 60%);
-                --chart-5: hsl(340 75% 55%);
-                --sidebar: hsl(222.2 84% 4.9%);
-                --sidebar-foreground: hsl(210 40% 98%);
-                --sidebar-primary: hsl(220 70% 50%);
-                --sidebar-primary-foreground: hsl(210 40% 98%);
-                --sidebar-accent: hsl(217.2 32.6% 17.5%);
-                --sidebar-accent-foreground: hsl(210 40% 98%);
-                --sidebar-border: hsl(217.2 32.6% 17.5%);
-                --sidebar-ring: hsl(212.7 26.8% 83.9%);
-              }
-            `
-            clonedDoc.head.appendChild(style)
-            // Also scope the fallbacks directly on the captured subtree
-            const isDark =
-              clonedDoc.documentElement.classList.contains("dark") ||
-              clonedDoc.body.classList.contains("dark")
+            const targetEl =
+              (clonedDoc.querySelector('[data-h2c-target="1"]') as HTMLElement) ||
+              (clonedDoc.querySelector('.max-w-4xl') as HTMLElement) ||
+              (clonedDoc.body as HTMLElement)
 
-            const lightFallbackVars: Record<string, string> = {
-              "--background": "hsl(0 0% 100%)",
-              "--foreground": "hsl(222.2 84% 4.9%)",
-              "--card": "hsl(0 0% 100%)",
-              "--card-foreground": "hsl(222.2 84% 4.9%)",
-              "--popover": "hsl(0 0% 100%)",
-              "--popover-foreground": "hsl(222.2 84% 4.9%)",
-              "--primary": "hsl(222.2 47.4% 11.2%)",
-              "--primary-foreground": "hsl(210 40% 98%)",
-              "--secondary": "hsl(210 40% 96%)",
-              "--secondary-foreground": "hsl(222.2 47.4% 11.2%)",
-              "--muted": "hsl(210 40% 96%)",
-              "--muted-foreground": "hsl(215.4 16.3% 46.9%)",
-              "--accent": "hsl(210 40% 96%)",
-              "--accent-foreground": "hsl(222.2 47.4% 11.2%)",
-              "--destructive": "hsl(0 84.2% 60.2%)",
-              "--destructive-foreground": "hsl(210 40% 98%)",
-              "--border": "hsl(214.3 31.8% 91.4%)",
-              "--input": "hsl(214.3 31.8% 91.4%)",
-              "--ring": "hsl(222.2 84% 4.9%)",
-              "--chart-1": "hsl(12 76% 61%)",
-              "--chart-2": "hsl(173 58% 39%)",
-              "--chart-3": "hsl(197 37% 24%)",
-              "--chart-4": "hsl(43 74% 66%)",
-              "--chart-5": "hsl(27 87% 67%)",
-              "--sidebar": "hsl(0 0% 100%)",
-              "--sidebar-foreground": "hsl(222.2 84% 4.9%)",
-              "--sidebar-primary": "hsl(222.2 47.4% 11.2%)",
-              "--sidebar-primary-foreground": "hsl(210 40% 98%)",
-              "--sidebar-accent": "hsl(210 40% 96%)",
-              "--sidebar-accent-foreground": "hsl(222.2 47.4% 11.2%)",
-              "--sidebar-border": "hsl(214.3 31.8% 91.4%)",
-              "--sidebar-ring": "hsl(222.2 84% 4.9%)",
+            const win = clonedDoc.defaultView as Window
+            const inlineAll = (el: Element) => {
+              const HTMLElementCtor = ((clonedDoc.defaultView as unknown) as any).HTMLElement || HTMLElement
+              if (!(el instanceof HTMLElementCtor)) return
+              const computed = win.getComputedStyle(el)
+              const style = (el as HTMLElement).style
+              for (let i = 0; i < computed.length; i++) {
+                const prop = computed[i]
+                const val = computed.getPropertyValue(prop)
+                style.setProperty(prop, val)
+              }
+              Array.from(el.children).forEach((child) => inlineAll(child))
             }
 
-            const darkFallbackVars: Record<string, string> = {
-              "--background": "hsl(222.2 84% 4.9%)",
-              "--foreground": "hsl(210 40% 98%)",
-              "--card": "hsl(222.2 84% 4.9%)",
-              "--card-foreground": "hsl(210 40% 98%)",
-              "--popover": "hsl(222.2 84% 4.9%)",
-              "--popover-foreground": "hsl(210 40% 98%)",
-              "--primary": "hsl(210 40% 98%)",
-              "--primary-foreground": "hsl(222.2 47.4% 11.2%)",
-              "--secondary": "hsl(217.2 32.6% 17.5%)",
-              "--secondary-foreground": "hsl(210 40% 98%)",
-              "--muted": "hsl(217.2 32.6% 17.5%)",
-              "--muted-foreground": "hsl(215 20.2% 65.1%)",
-              "--accent": "hsl(217.2 32.6% 17.5%)",
-              "--accent-foreground": "hsl(210 40% 98%)",
-              "--destructive": "hsl(0 62.8% 30.6%)",
-              "--destructive-foreground": "hsl(210 40% 98%)",
-              "--border": "hsl(217.2 32.6% 17.5%)",
-              "--input": "hsl(217.2 32.6% 17.5%)",
-              "--ring": "hsl(212.7 26.8% 83.9%)",
-              "--chart-1": "hsl(220 70% 50%)",
-              "--chart-2": "hsl(160 60% 45%)",
-              "--chart-3": "hsl(30 80% 55%)",
-              "--chart-4": "hsl(280 65% 60%)",
-              "--chart-5": "hsl(340 75% 55%)",
-              "--sidebar": "hsl(222.2 84% 4.9%)",
-              "--sidebar-foreground": "hsl(210 40% 98%)",
-              "--sidebar-primary": "hsl(220 70% 50%)",
-              "--sidebar-primary-foreground": "hsl(210 40% 98%)",
-              "--sidebar-accent": "hsl(217.2 32.6% 17.5%)",
-              "--sidebar-accent-foreground": "hsl(210 40% 98%)",
-              "--sidebar-border": "hsl(217.2 32.6% 17.5%)",
-              "--sidebar-ring": "hsl(212.7 26.8% 83.9%)",
-            }
+            inlineAll(targetEl)
 
-            const vars = isDark ? darkFallbackVars : lightFallbackVars
-            const targetEl = (clonedDoc.querySelector(".max-w-4xl") as HTMLElement) || (clonedDoc.body as HTMLElement)
-            Object.entries(vars).forEach(([k, v]) => {
-              targetEl.style.setProperty(k, v)
-            })
+            // Remove external styles to avoid parsing unsupported color functions
+            Array.from(
+              clonedDoc.querySelectorAll('link[rel="stylesheet"], style')
+            ).forEach((n) => n.parentNode?.removeChild(n))
+
+            // Reset theme classes and isolate subtree
+            clonedDoc.documentElement.classList.remove('dark')
+            clonedDoc.body.classList.remove('dark')
+            clonedDoc.body.innerHTML = ''
+            clonedDoc.body.appendChild(targetEl)
+            clonedDoc.body.style.backgroundColor = '#ffffff'
           } catch (e) {
             console.log("[v0] onclone inject fallback failed:", e)
           }
@@ -308,6 +187,7 @@ export default function ResultActions({
       console.error("[v0] Error generating PDF:", error)
       alert("Error generating PDF. Please try again or use the Print option.")
     } finally {
+      try { reportCard?.removeAttribute("data-h2c-target") } catch {}
       setIsDownloading(false)
     }
   }
@@ -376,6 +256,7 @@ export default function ResultActions({
       }
 
       console.log("[v0] Capturing PNG with html2canvas")
+      reportCard.setAttribute("data-h2c-target", "1")
       const canvas = await html2canvas(reportCard, {
         scale: 2,
         useCORS: true,
@@ -385,159 +266,38 @@ export default function ResultActions({
         height: reportCard.scrollHeight,
         onclone: (clonedDoc: Document) => {
           try {
-            const style = clonedDoc.createElement("style")
-            style.setAttribute("data-h2c-fallback", "true")
-            style.textContent = `
-              :root {
-                --background: hsl(0 0% 100%);
-                --foreground: hsl(222.2 84% 4.9%);
-                --card: hsl(0 0% 100%);
-                --card-foreground: hsl(222.2 84% 4.9%);
-                --popover: hsl(0 0% 100%);
-                --popover-foreground: hsl(222.2 84% 4.9%);
-                --primary: hsl(222.2 47.4% 11.2%);
-                --primary-foreground: hsl(210 40% 98%);
-                --secondary: hsl(210 40% 96%);
-                --secondary-foreground: hsl(222.2 47.4% 11.2%);
-                --muted: hsl(210 40% 96%);
-                --muted-foreground: hsl(215.4 16.3% 46.9%);
-                --accent: hsl(210 40% 96%);
-                --accent-foreground: hsl(222.2 47.4% 11.2%);
-                --destructive: hsl(0 84.2% 60.2%);
-                --destructive-foreground: hsl(210 40% 98%);
-                --border: hsl(214.3 31.8% 91.4%);
-                --input: hsl(214.3 31.8% 91.4%);
-                --ring: hsl(222.2 84% 4.9%);
-                --chart-1: hsl(12 76% 61%);
-                --chart-2: hsl(173 58% 39%);
-                --chart-3: hsl(197 37% 24%);
-                --chart-4: hsl(43 74% 66%);
-                --chart-5: hsl(27 87% 67%);
-                --sidebar: hsl(0 0% 100%);
-                --sidebar-foreground: hsl(222.2 84% 4.9%);
-                --sidebar-primary: hsl(222.2 47.4% 11.2%);
-                --sidebar-primary-foreground: hsl(210 40% 98%);
-                --sidebar-accent: hsl(210 40% 96%);
-                --sidebar-accent-foreground: hsl(222.2 47.4% 11.2%);
-                --sidebar-border: hsl(214.3 31.8% 91.4%);
-                --sidebar-ring: hsl(222.2 84% 4.9%);
-              }
-              .dark {
-                --background: hsl(222.2 84% 4.9%);
-                --foreground: hsl(210 40% 98%);
-                --card: hsl(222.2 84% 4.9%);
-                --card-foreground: hsl(210 40% 98%);
-                --popover: hsl(222.2 84% 4.9%);
-                --popover-foreground: hsl(210 40% 98%);
-                --primary: hsl(210 40% 98%);
-                --primary-foreground: hsl(222.2 47.4% 11.2%);
-                --secondary: hsl(217.2 32.6% 17.5%);
-                --secondary-foreground: hsl(210 40% 98%);
-                --muted: hsl(217.2 32.6% 17.5%);
-                --muted-foreground: hsl(215 20.2% 65.1%);
-                --accent: hsl(217.2 32.6% 17.5%);
-                --accent-foreground: hsl(210 40% 98%);
-                --destructive: hsl(0 62.8% 30.6%);
-                --destructive-foreground: hsl(210 40% 98%);
-                --border: hsl(217.2 32.6% 17.5%);
-                --input: hsl(217.2 32.6% 17.5%);
-                --ring: hsl(212.7 26.8% 83.9%);
-                --chart-1: hsl(220 70% 50%);
-                --chart-2: hsl(160 60% 45%);
-                --chart-3: hsl(30 80% 55%);
-                --chart-4: hsl(280 65% 60%);
-                --chart-5: hsl(340 75% 55%);
-                --sidebar: hsl(222.2 84% 4.9%);
-                --sidebar-foreground: hsl(210 40% 98%);
-                --sidebar-primary: hsl(220 70% 50%);
-                --sidebar-primary-foreground: hsl(210 40% 98%);
-                --sidebar-accent: hsl(217.2 32.6% 17.5%);
-                --sidebar-accent-foreground: hsl(210 40% 98%);
-                --sidebar-border: hsl(217.2 32.6% 17.5%);
-                --sidebar-ring: hsl(212.7 26.8% 83.9%);
-              }
-            `
-            clonedDoc.head.appendChild(style)
-            // Also scope the fallbacks directly on the captured subtree
-            const isDark =
-              clonedDoc.documentElement.classList.contains("dark") ||
-              clonedDoc.body.classList.contains("dark")
+            const targetEl =
+              (clonedDoc.querySelector('[data-h2c-target="1"]') as HTMLElement) ||
+              (clonedDoc.querySelector('.max-w-4xl') as HTMLElement) ||
+              (clonedDoc.body as HTMLElement)
 
-            const lightFallbackVars: Record<string, string> = {
-              "--background": "hsl(0 0% 100%)",
-              "--foreground": "hsl(222.2 84% 4.9%)",
-              "--card": "hsl(0 0% 100%)",
-              "--card-foreground": "hsl(222.2 84% 4.9%)",
-              "--popover": "hsl(0 0% 100%)",
-              "--popover-foreground": "hsl(222.2 84% 4.9%)",
-              "--primary": "hsl(222.2 47.4% 11.2%)",
-              "--primary-foreground": "hsl(210 40% 98%)",
-              "--secondary": "hsl(210 40% 96%)",
-              "--secondary-foreground": "hsl(222.2 47.4% 11.2%)",
-              "--muted": "hsl(210 40% 96%)",
-              "--muted-foreground": "hsl(215.4 16.3% 46.9%)",
-              "--accent": "hsl(210 40% 96%)",
-              "--accent-foreground": "hsl(222.2 47.4% 11.2%)",
-              "--destructive": "hsl(0 84.2% 60.2%)",
-              "--destructive-foreground": "hsl(210 40% 98%)",
-              "--border": "hsl(214.3 31.8% 91.4%)",
-              "--input": "hsl(214.3 31.8% 91.4%)",
-              "--ring": "hsl(222.2 84% 4.9%)",
-              "--chart-1": "hsl(12 76% 61%)",
-              "--chart-2": "hsl(173 58% 39%)",
-              "--chart-3": "hsl(197 37% 24%)",
-              "--chart-4": "hsl(43 74% 66%)",
-              "--chart-5": "hsl(27 87% 67%)",
-              "--sidebar": "hsl(0 0% 100%)",
-              "--sidebar-foreground": "hsl(222.2 84% 4.9%)",
-              "--sidebar-primary": "hsl(222.2 47.4% 11.2%)",
-              "--sidebar-primary-foreground": "hsl(210 40% 98%)",
-              "--sidebar-accent": "hsl(210 40% 96%)",
-              "--sidebar-accent-foreground": "hsl(222.2 47.4% 11.2%)",
-              "--sidebar-border": "hsl(214.3 31.8% 91.4%)",
-              "--sidebar-ring": "hsl(222.2 84% 4.9%)",
+            const win = clonedDoc.defaultView as Window
+            const inlineAll = (el: Element) => {
+              const HTMLElementCtor = ((clonedDoc.defaultView as unknown) as any).HTMLElement || HTMLElement
+              if (!(el instanceof HTMLElementCtor)) return
+              const computed = win.getComputedStyle(el)
+              const style = (el as HTMLElement).style
+              for (let i = 0; i < computed.length; i++) {
+                const prop = computed[i]
+                const val = computed.getPropertyValue(prop)
+                style.setProperty(prop, val)
+              }
+              Array.from(el.children).forEach((child) => inlineAll(child))
             }
 
-            const darkFallbackVars: Record<string, string> = {
-              "--background": "hsl(222.2 84% 4.9%)",
-              "--foreground": "hsl(210 40% 98%)",
-              "--card": "hsl(222.2 84% 4.9%)",
-              "--card-foreground": "hsl(210 40% 98%)",
-              "--popover": "hsl(222.2 84% 4.9%)",
-              "--popover-foreground": "hsl(210 40% 98%)",
-              "--primary": "hsl(210 40% 98%)",
-              "--primary-foreground": "hsl(222.2 47.4% 11.2%)",
-              "--secondary": "hsl(217.2 32.6% 17.5%)",
-              "--secondary-foreground": "hsl(210 40% 98%)",
-              "--muted": "hsl(217.2 32.6% 17.5%)",
-              "--muted-foreground": "hsl(215 20.2% 65.1%)",
-              "--accent": "hsl(217.2 32.6% 17.5%)",
-              "--accent-foreground": "hsl(210 40% 98%)",
-              "--destructive": "hsl(0 62.8% 30.6%)",
-              "--destructive-foreground": "hsl(210 40% 98%)",
-              "--border": "hsl(217.2 32.6% 17.5%)",
-              "--input": "hsl(217.2 32.6% 17.5%)",
-              "--ring": "hsl(212.7 26.8% 83.9%)",
-              "--chart-1": "hsl(220 70% 50%)",
-              "--chart-2": "hsl(160 60% 45%)",
-              "--chart-3": "hsl(30 80% 55%)",
-              "--chart-4": "hsl(280 65% 60%)",
-              "--chart-5": "hsl(340 75% 55%)",
-              "--sidebar": "hsl(222.2 84% 4.9%)",
-              "--sidebar-foreground": "hsl(210 40% 98%)",
-              "--sidebar-primary": "hsl(220 70% 50%)",
-              "--sidebar-primary-foreground": "hsl(210 40% 98%)",
-              "--sidebar-accent": "hsl(217.2 32.6% 17.5%)",
-              "--sidebar-accent-foreground": "hsl(210 40% 98%)",
-              "--sidebar-border": "hsl(217.2 32.6% 17.5%)",
-              "--sidebar-ring": "hsl(212.7 26.8% 83.9%)",
-            }
+            inlineAll(targetEl)
 
-            const vars = isDark ? darkFallbackVars : lightFallbackVars
-            const targetEl = (clonedDoc.querySelector(".max-w-4xl") as HTMLElement) || (clonedDoc.body as HTMLElement)
-            Object.entries(vars).forEach(([k, v]) => {
-              targetEl.style.setProperty(k, v)
-            })
+            // Remove external styles to avoid parsing unsupported color functions
+            Array.from(
+              clonedDoc.querySelectorAll('link[rel="stylesheet"], style')
+            ).forEach((n) => n.parentNode?.removeChild(n))
+
+            // Reset theme classes and isolate subtree
+            clonedDoc.documentElement.classList.remove('dark')
+            clonedDoc.body.classList.remove('dark')
+            clonedDoc.body.innerHTML = ''
+            clonedDoc.body.appendChild(targetEl)
+            clonedDoc.body.style.backgroundColor = '#ffffff'
           } catch (e) {
             console.log("[v0] onclone inject fallback failed:", e)
           }
@@ -564,6 +324,10 @@ export default function ResultActions({
       console.error("[v0] Error generating PNG:", error)
       alert("Error generating PNG. Please try again.")
     } finally {
+      try {
+        const el = document.querySelector('[data-h2c-target="1"]') as HTMLElement | null
+        if (el) el.removeAttribute("data-h2c-target")
+      } catch {}
       setIsPngDownloading(false)
     }
   }
