@@ -369,6 +369,49 @@
   background-clip: text;
 }
 
+/* Scope-safe variable fallbacks to avoid OKLCH for html2canvas */
+.legacy-theme {
+  /* destructive colors */
+  --destructive: #ef4444; /* red-500 */
+  --destructive-foreground: #ffffff;
+
+  /* charts (approximate legacy palette) */
+  --chart-1: #f59e0b; /* amber-500 */
+  --chart-2: #10b981; /* emerald-500 */
+  --chart-3: #1f2937; /* gray-800 */
+  --chart-4: #e5e7eb; /* gray-200 */
+  --chart-5: #6b7280; /* gray-500 */
+
+  /* sidebar system */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #262626; /* neutral-800 */
+  --sidebar-primary: #1f2937; /* gray-800 */
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f4f6; /* gray-100 */
+  --sidebar-accent-foreground: #1f2937;
+  --sidebar-border: #e5e7eb; /* gray-200 */
+  --sidebar-ring: #93c5fd; /* blue-300 */
+}
+
+/* Ensure dark mode within legacy-theme also uses safe values */
+.legacy-theme.dark {
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --chart-1: #60a5fa; /* blue-400 */
+  --chart-2: #34d399; /* emerald-400 */
+  --chart-3: #f59e0b; /* amber-500 */
+  --chart-4: #a78bfa; /* violet-400 */
+  --chart-5: #fb7185; /* rose-400 */
+  --sidebar: #111827; /* gray-900 */
+  --sidebar-foreground: #f9fafb; /* gray-50 */
+  --sidebar-primary: #1f2937; /* gray-800 */
+  --sidebar-primary-foreground: #f9fafb;
+  --sidebar-accent: #374151; /* gray-700 */
+  --sidebar-accent-foreground: #f9fafb;
+  --sidebar-border: #374151; /* gray-700 */
+  --sidebar-ring: #60a5fa; /* blue-400 */
+}
+
 /* html2canvas compatibility: force hex/RGB colors under legacy-theme to avoid OKLCH parsing errors */
 .legacy-theme .bg-yellow-50 { background-color: #fefce8 !important; }
 .legacy-theme .bg-orange-100 { background-color: #ffedd5 !important; }
@@ -384,6 +427,8 @@
 .legacy-theme .text-yellow-800 { color: #854d0e !important; }
 .legacy-theme .text-green-700 { color: #15803d !important; }
 .legacy-theme .text-white { color: #ffffff !important; }
+.legacy-theme .text-orange-500 { color: #f97316 !important; }
+.legacy-theme .text-red-600 { color: #dc2626 !important; }
 
 .legacy-theme .border-gray-200 { border-color: #e5e7eb !important; }
 .legacy-theme .border-gray-400 { border-color: #9ca3af !important; }
