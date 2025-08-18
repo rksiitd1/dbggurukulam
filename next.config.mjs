@@ -1,3 +1,4 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -9,6 +10,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-}
+  experimental: {
+    optimizeCss: false, // <-- disable LightningCSS / native oxide usage
+  },
+};
 
-export default nextConfig
+export default nextConfig;
