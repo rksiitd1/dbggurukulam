@@ -211,11 +211,9 @@ export default function StudentSearchPage({ params }: PageProps) {
       }
 
       if (student) {
-        router.replace(
-          `/results/${academicYear}/${examType}/${encodeURIComponent(examPeriod)}/student/${student.id}/multi-mode`,
-          undefined,
-          { shallow: true }
-        )
+        const path = `/results/${academicYear}/${examType}/${encodeURIComponent(examPeriod)}/student/${student.id}/multi-mode`
+        const base = process.env.NEXT_PUBLIC_BASE_URL || ""
+        router.replace(`${base}${path}`)
       } else {
         setNameError("Student not found. Please check the name, class, and roll number.")
         setIsVerifying(false)
