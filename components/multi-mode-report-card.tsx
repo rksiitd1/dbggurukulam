@@ -1,5 +1,6 @@
 import type { StudentData } from "@/lib/data"
 import "@/styles/legacy-theme.css"
+import "@/styles/legacy-globals.css"
 import Image from "next/image"
 
 // Import the new data structure

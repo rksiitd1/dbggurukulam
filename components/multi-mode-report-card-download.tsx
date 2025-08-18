@@ -1,6 +1,7 @@
 "use client"
 
 import "@/styles/legacy-theme.css"
+import "@/styles/legacy-globals.css"
 
 import type { StudentData } from "@/lib/data"
 import Image from "next/image"
