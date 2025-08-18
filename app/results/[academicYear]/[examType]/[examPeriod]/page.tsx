@@ -211,9 +211,8 @@ export default function StudentSearchPage({ params }: PageProps) {
       }
 
       if (student) {
-        const path = `/results/${academicYear}/${examType}/${encodeURIComponent(examPeriod)}/student/${student.id}/multi-mode`
-        const base = process.env.NEXT_PUBLIC_BASE_URL || ""
-        router.replace(`${base}${path}`)
+        const url = `https://results.dbggurukulam.com/results/${academicYear}/${examType}/${encodeURIComponent(examPeriod)}/student/${student.id}/multi-mode`
+        router.replace(url)
       } else {
         setNameError("Student not found. Please check the name, class, and roll number.")
         setIsVerifying(false)
