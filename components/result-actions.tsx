@@ -118,42 +118,156 @@ export default function ResultActions({
             const style = clonedDoc.createElement("style")
             style.setAttribute("data-h2c-fallback", "true")
             style.textContent = `
-              :root, .dark {
-                --background: #ffffff;
-                --foreground: #111111;
-                --card: #ffffff;
-                --card-foreground: #111111;
-                --popover: #ffffff;
-                --popover-foreground: #111111;
-                --primary: #111111;
-                --primary-foreground: #f5f5f5;
-                --secondary: #f7f7f7;
-                --secondary-foreground: #111111;
-                --muted: #f7f7f7;
-                --muted-foreground: #6b7280;
-                --accent: #f7f7f7;
-                --accent-foreground: #111111;
-                --destructive: #ef4444;
-                --destructive-foreground: #ffffff;
-                --border: #e5e5e5;
-                --input: #e5e5e5;
-                --ring: #9ca3af;
-                --chart-1: #7c3aed;
-                --chart-2: #0ea5e9;
-                --chart-3: #f59e0b;
-                --chart-4: #10b981;
-                --chart-5: #ef4444;
-                --sidebar: #f9fafb;
-                --sidebar-foreground: #111111;
-                --sidebar-primary: #111111;
-                --sidebar-primary-foreground: #f5f5f5;
-                --sidebar-accent: #f3f4f6;
-                --sidebar-accent-foreground: #111111;
-                --sidebar-border: #e5e7eb;
-                --sidebar-ring: #9ca3af;
+              :root {
+                --background: hsl(0 0% 100%);
+                --foreground: hsl(222.2 84% 4.9%);
+                --card: hsl(0 0% 100%);
+                --card-foreground: hsl(222.2 84% 4.9%);
+                --popover: hsl(0 0% 100%);
+                --popover-foreground: hsl(222.2 84% 4.9%);
+                --primary: hsl(222.2 47.4% 11.2%);
+                --primary-foreground: hsl(210 40% 98%);
+                --secondary: hsl(210 40% 96%);
+                --secondary-foreground: hsl(222.2 47.4% 11.2%);
+                --muted: hsl(210 40% 96%);
+                --muted-foreground: hsl(215.4 16.3% 46.9%);
+                --accent: hsl(210 40% 96%);
+                --accent-foreground: hsl(222.2 47.4% 11.2%);
+                --destructive: hsl(0 84.2% 60.2%);
+                --destructive-foreground: hsl(210 40% 98%);
+                --border: hsl(214.3 31.8% 91.4%);
+                --input: hsl(214.3 31.8% 91.4%);
+                --ring: hsl(222.2 84% 4.9%);
+                --chart-1: hsl(12 76% 61%);
+                --chart-2: hsl(173 58% 39%);
+                --chart-3: hsl(197 37% 24%);
+                --chart-4: hsl(43 74% 66%);
+                --chart-5: hsl(27 87% 67%);
+                --sidebar: hsl(0 0% 100%);
+                --sidebar-foreground: hsl(222.2 84% 4.9%);
+                --sidebar-primary: hsl(222.2 47.4% 11.2%);
+                --sidebar-primary-foreground: hsl(210 40% 98%);
+                --sidebar-accent: hsl(210 40% 96%);
+                --sidebar-accent-foreground: hsl(222.2 47.4% 11.2%);
+                --sidebar-border: hsl(214.3 31.8% 91.4%);
+                --sidebar-ring: hsl(222.2 84% 4.9%);
+              }
+              .dark {
+                --background: hsl(222.2 84% 4.9%);
+                --foreground: hsl(210 40% 98%);
+                --card: hsl(222.2 84% 4.9%);
+                --card-foreground: hsl(210 40% 98%);
+                --popover: hsl(222.2 84% 4.9%);
+                --popover-foreground: hsl(210 40% 98%);
+                --primary: hsl(210 40% 98%);
+                --primary-foreground: hsl(222.2 47.4% 11.2%);
+                --secondary: hsl(217.2 32.6% 17.5%);
+                --secondary-foreground: hsl(210 40% 98%);
+                --muted: hsl(217.2 32.6% 17.5%);
+                --muted-foreground: hsl(215 20.2% 65.1%);
+                --accent: hsl(217.2 32.6% 17.5%);
+                --accent-foreground: hsl(210 40% 98%);
+                --destructive: hsl(0 62.8% 30.6%);
+                --destructive-foreground: hsl(210 40% 98%);
+                --border: hsl(217.2 32.6% 17.5%);
+                --input: hsl(217.2 32.6% 17.5%);
+                --ring: hsl(212.7 26.8% 83.9%);
+                --chart-1: hsl(220 70% 50%);
+                --chart-2: hsl(160 60% 45%);
+                --chart-3: hsl(30 80% 55%);
+                --chart-4: hsl(280 65% 60%);
+                --chart-5: hsl(340 75% 55%);
+                --sidebar: hsl(222.2 84% 4.9%);
+                --sidebar-foreground: hsl(210 40% 98%);
+                --sidebar-primary: hsl(220 70% 50%);
+                --sidebar-primary-foreground: hsl(210 40% 98%);
+                --sidebar-accent: hsl(217.2 32.6% 17.5%);
+                --sidebar-accent-foreground: hsl(210 40% 98%);
+                --sidebar-border: hsl(217.2 32.6% 17.5%);
+                --sidebar-ring: hsl(212.7 26.8% 83.9%);
               }
             `
             clonedDoc.head.appendChild(style)
+            // Also scope the fallbacks directly on the captured subtree
+            const isDark =
+              clonedDoc.documentElement.classList.contains("dark") ||
+              clonedDoc.body.classList.contains("dark")
+
+            const lightFallbackVars: Record<string, string> = {
+              "--background": "hsl(0 0% 100%)",
+              "--foreground": "hsl(222.2 84% 4.9%)",
+              "--card": "hsl(0 0% 100%)",
+              "--card-foreground": "hsl(222.2 84% 4.9%)",
+              "--popover": "hsl(0 0% 100%)",
+              "--popover-foreground": "hsl(222.2 84% 4.9%)",
+              "--primary": "hsl(222.2 47.4% 11.2%)",
+              "--primary-foreground": "hsl(210 40% 98%)",
+              "--secondary": "hsl(210 40% 96%)",
+              "--secondary-foreground": "hsl(222.2 47.4% 11.2%)",
+              "--muted": "hsl(210 40% 96%)",
+              "--muted-foreground": "hsl(215.4 16.3% 46.9%)",
+              "--accent": "hsl(210 40% 96%)",
+              "--accent-foreground": "hsl(222.2 47.4% 11.2%)",
+              "--destructive": "hsl(0 84.2% 60.2%)",
+              "--destructive-foreground": "hsl(210 40% 98%)",
+              "--border": "hsl(214.3 31.8% 91.4%)",
+              "--input": "hsl(214.3 31.8% 91.4%)",
+              "--ring": "hsl(222.2 84% 4.9%)",
+              "--chart-1": "hsl(12 76% 61%)",
+              "--chart-2": "hsl(173 58% 39%)",
+              "--chart-3": "hsl(197 37% 24%)",
+              "--chart-4": "hsl(43 74% 66%)",
+              "--chart-5": "hsl(27 87% 67%)",
+              "--sidebar": "hsl(0 0% 100%)",
+              "--sidebar-foreground": "hsl(222.2 84% 4.9%)",
+              "--sidebar-primary": "hsl(222.2 47.4% 11.2%)",
+              "--sidebar-primary-foreground": "hsl(210 40% 98%)",
+              "--sidebar-accent": "hsl(210 40% 96%)",
+              "--sidebar-accent-foreground": "hsl(222.2 47.4% 11.2%)",
+              "--sidebar-border": "hsl(214.3 31.8% 91.4%)",
+              "--sidebar-ring": "hsl(222.2 84% 4.9%)",
+            }
+
+            const darkFallbackVars: Record<string, string> = {
+              "--background": "hsl(222.2 84% 4.9%)",
+              "--foreground": "hsl(210 40% 98%)",
+              "--card": "hsl(222.2 84% 4.9%)",
+              "--card-foreground": "hsl(210 40% 98%)",
+              "--popover": "hsl(222.2 84% 4.9%)",
+              "--popover-foreground": "hsl(210 40% 98%)",
+              "--primary": "hsl(210 40% 98%)",
+              "--primary-foreground": "hsl(222.2 47.4% 11.2%)",
+              "--secondary": "hsl(217.2 32.6% 17.5%)",
+              "--secondary-foreground": "hsl(210 40% 98%)",
+              "--muted": "hsl(217.2 32.6% 17.5%)",
+              "--muted-foreground": "hsl(215 20.2% 65.1%)",
+              "--accent": "hsl(217.2 32.6% 17.5%)",
+              "--accent-foreground": "hsl(210 40% 98%)",
+              "--destructive": "hsl(0 62.8% 30.6%)",
+              "--destructive-foreground": "hsl(210 40% 98%)",
+              "--border": "hsl(217.2 32.6% 17.5%)",
+              "--input": "hsl(217.2 32.6% 17.5%)",
+              "--ring": "hsl(212.7 26.8% 83.9%)",
+              "--chart-1": "hsl(220 70% 50%)",
+              "--chart-2": "hsl(160 60% 45%)",
+              "--chart-3": "hsl(30 80% 55%)",
+              "--chart-4": "hsl(280 65% 60%)",
+              "--chart-5": "hsl(340 75% 55%)",
+              "--sidebar": "hsl(222.2 84% 4.9%)",
+              "--sidebar-foreground": "hsl(210 40% 98%)",
+              "--sidebar-primary": "hsl(220 70% 50%)",
+              "--sidebar-primary-foreground": "hsl(210 40% 98%)",
+              "--sidebar-accent": "hsl(217.2 32.6% 17.5%)",
+              "--sidebar-accent-foreground": "hsl(210 40% 98%)",
+              "--sidebar-border": "hsl(217.2 32.6% 17.5%)",
+              "--sidebar-ring": "hsl(212.7 26.8% 83.9%)",
+            }
+
+            const vars = isDark ? darkFallbackVars : lightFallbackVars
+            const targetEl = (clonedDoc.querySelector(".max-w-4xl") as HTMLElement) || (clonedDoc.body as HTMLElement)
+            Object.entries(vars).forEach(([k, v]) => {
+              targetEl.style.setProperty(k, v)
+            })
           } catch (e) {
             console.log("[v0] onclone inject fallback failed:", e)
           }
@@ -274,42 +388,156 @@ export default function ResultActions({
             const style = clonedDoc.createElement("style")
             style.setAttribute("data-h2c-fallback", "true")
             style.textContent = `
-              :root, .dark {
-                --background: #ffffff;
-                --foreground: #111111;
-                --card: #ffffff;
-                --card-foreground: #111111;
-                --popover: #ffffff;
-                --popover-foreground: #111111;
-                --primary: #111111;
-                --primary-foreground: #f5f5f5;
-                --secondary: #f7f7f7;
-                --secondary-foreground: #111111;
-                --muted: #f7f7f7;
-                --muted-foreground: #6b7280;
-                --accent: #f7f7f7;
-                --accent-foreground: #111111;
-                --destructive: #ef4444;
-                --destructive-foreground: #ffffff;
-                --border: #e5e5e5;
-                --input: #e5e5e5;
-                --ring: #9ca3af;
-                --chart-1: #7c3aed;
-                --chart-2: #0ea5e9;
-                --chart-3: #f59e0b;
-                --chart-4: #10b981;
-                --chart-5: #ef4444;
-                --sidebar: #f9fafb;
-                --sidebar-foreground: #111111;
-                --sidebar-primary: #111111;
-                --sidebar-primary-foreground: #f5f5f5;
-                --sidebar-accent: #f3f4f6;
-                --sidebar-accent-foreground: #111111;
-                --sidebar-border: #e5e7eb;
-                --sidebar-ring: #9ca3af;
+              :root {
+                --background: hsl(0 0% 100%);
+                --foreground: hsl(222.2 84% 4.9%);
+                --card: hsl(0 0% 100%);
+                --card-foreground: hsl(222.2 84% 4.9%);
+                --popover: hsl(0 0% 100%);
+                --popover-foreground: hsl(222.2 84% 4.9%);
+                --primary: hsl(222.2 47.4% 11.2%);
+                --primary-foreground: hsl(210 40% 98%);
+                --secondary: hsl(210 40% 96%);
+                --secondary-foreground: hsl(222.2 47.4% 11.2%);
+                --muted: hsl(210 40% 96%);
+                --muted-foreground: hsl(215.4 16.3% 46.9%);
+                --accent: hsl(210 40% 96%);
+                --accent-foreground: hsl(222.2 47.4% 11.2%);
+                --destructive: hsl(0 84.2% 60.2%);
+                --destructive-foreground: hsl(210 40% 98%);
+                --border: hsl(214.3 31.8% 91.4%);
+                --input: hsl(214.3 31.8% 91.4%);
+                --ring: hsl(222.2 84% 4.9%);
+                --chart-1: hsl(12 76% 61%);
+                --chart-2: hsl(173 58% 39%);
+                --chart-3: hsl(197 37% 24%);
+                --chart-4: hsl(43 74% 66%);
+                --chart-5: hsl(27 87% 67%);
+                --sidebar: hsl(0 0% 100%);
+                --sidebar-foreground: hsl(222.2 84% 4.9%);
+                --sidebar-primary: hsl(222.2 47.4% 11.2%);
+                --sidebar-primary-foreground: hsl(210 40% 98%);
+                --sidebar-accent: hsl(210 40% 96%);
+                --sidebar-accent-foreground: hsl(222.2 47.4% 11.2%);
+                --sidebar-border: hsl(214.3 31.8% 91.4%);
+                --sidebar-ring: hsl(222.2 84% 4.9%);
+              }
+              .dark {
+                --background: hsl(222.2 84% 4.9%);
+                --foreground: hsl(210 40% 98%);
+                --card: hsl(222.2 84% 4.9%);
+                --card-foreground: hsl(210 40% 98%);
+                --popover: hsl(222.2 84% 4.9%);
+                --popover-foreground: hsl(210 40% 98%);
+                --primary: hsl(210 40% 98%);
+                --primary-foreground: hsl(222.2 47.4% 11.2%);
+                --secondary: hsl(217.2 32.6% 17.5%);
+                --secondary-foreground: hsl(210 40% 98%);
+                --muted: hsl(217.2 32.6% 17.5%);
+                --muted-foreground: hsl(215 20.2% 65.1%);
+                --accent: hsl(217.2 32.6% 17.5%);
+                --accent-foreground: hsl(210 40% 98%);
+                --destructive: hsl(0 62.8% 30.6%);
+                --destructive-foreground: hsl(210 40% 98%);
+                --border: hsl(217.2 32.6% 17.5%);
+                --input: hsl(217.2 32.6% 17.5%);
+                --ring: hsl(212.7 26.8% 83.9%);
+                --chart-1: hsl(220 70% 50%);
+                --chart-2: hsl(160 60% 45%);
+                --chart-3: hsl(30 80% 55%);
+                --chart-4: hsl(280 65% 60%);
+                --chart-5: hsl(340 75% 55%);
+                --sidebar: hsl(222.2 84% 4.9%);
+                --sidebar-foreground: hsl(210 40% 98%);
+                --sidebar-primary: hsl(220 70% 50%);
+                --sidebar-primary-foreground: hsl(210 40% 98%);
+                --sidebar-accent: hsl(217.2 32.6% 17.5%);
+                --sidebar-accent-foreground: hsl(210 40% 98%);
+                --sidebar-border: hsl(217.2 32.6% 17.5%);
+                --sidebar-ring: hsl(212.7 26.8% 83.9%);
               }
             `
             clonedDoc.head.appendChild(style)
+            // Also scope the fallbacks directly on the captured subtree
+            const isDark =
+              clonedDoc.documentElement.classList.contains("dark") ||
+              clonedDoc.body.classList.contains("dark")
+
+            const lightFallbackVars: Record<string, string> = {
+              "--background": "hsl(0 0% 100%)",
+              "--foreground": "hsl(222.2 84% 4.9%)",
+              "--card": "hsl(0 0% 100%)",
+              "--card-foreground": "hsl(222.2 84% 4.9%)",
+              "--popover": "hsl(0 0% 100%)",
+              "--popover-foreground": "hsl(222.2 84% 4.9%)",
+              "--primary": "hsl(222.2 47.4% 11.2%)",
+              "--primary-foreground": "hsl(210 40% 98%)",
+              "--secondary": "hsl(210 40% 96%)",
+              "--secondary-foreground": "hsl(222.2 47.4% 11.2%)",
+              "--muted": "hsl(210 40% 96%)",
+              "--muted-foreground": "hsl(215.4 16.3% 46.9%)",
+              "--accent": "hsl(210 40% 96%)",
+              "--accent-foreground": "hsl(222.2 47.4% 11.2%)",
+              "--destructive": "hsl(0 84.2% 60.2%)",
+              "--destructive-foreground": "hsl(210 40% 98%)",
+              "--border": "hsl(214.3 31.8% 91.4%)",
+              "--input": "hsl(214.3 31.8% 91.4%)",
+              "--ring": "hsl(222.2 84% 4.9%)",
+              "--chart-1": "hsl(12 76% 61%)",
+              "--chart-2": "hsl(173 58% 39%)",
+              "--chart-3": "hsl(197 37% 24%)",
+              "--chart-4": "hsl(43 74% 66%)",
+              "--chart-5": "hsl(27 87% 67%)",
+              "--sidebar": "hsl(0 0% 100%)",
+              "--sidebar-foreground": "hsl(222.2 84% 4.9%)",
+              "--sidebar-primary": "hsl(222.2 47.4% 11.2%)",
+              "--sidebar-primary-foreground": "hsl(210 40% 98%)",
+              "--sidebar-accent": "hsl(210 40% 96%)",
+              "--sidebar-accent-foreground": "hsl(222.2 47.4% 11.2%)",
+              "--sidebar-border": "hsl(214.3 31.8% 91.4%)",
+              "--sidebar-ring": "hsl(222.2 84% 4.9%)",
+            }
+
+            const darkFallbackVars: Record<string, string> = {
+              "--background": "hsl(222.2 84% 4.9%)",
+              "--foreground": "hsl(210 40% 98%)",
+              "--card": "hsl(222.2 84% 4.9%)",
+              "--card-foreground": "hsl(210 40% 98%)",
+              "--popover": "hsl(222.2 84% 4.9%)",
+              "--popover-foreground": "hsl(210 40% 98%)",
+              "--primary": "hsl(210 40% 98%)",
+              "--primary-foreground": "hsl(222.2 47.4% 11.2%)",
+              "--secondary": "hsl(217.2 32.6% 17.5%)",
+              "--secondary-foreground": "hsl(210 40% 98%)",
+              "--muted": "hsl(217.2 32.6% 17.5%)",
+              "--muted-foreground": "hsl(215 20.2% 65.1%)",
+              "--accent": "hsl(217.2 32.6% 17.5%)",
+              "--accent-foreground": "hsl(210 40% 98%)",
+              "--destructive": "hsl(0 62.8% 30.6%)",
+              "--destructive-foreground": "hsl(210 40% 98%)",
+              "--border": "hsl(217.2 32.6% 17.5%)",
+              "--input": "hsl(217.2 32.6% 17.5%)",
+              "--ring": "hsl(212.7 26.8% 83.9%)",
+              "--chart-1": "hsl(220 70% 50%)",
+              "--chart-2": "hsl(160 60% 45%)",
+              "--chart-3": "hsl(30 80% 55%)",
+              "--chart-4": "hsl(280 65% 60%)",
+              "--chart-5": "hsl(340 75% 55%)",
+              "--sidebar": "hsl(222.2 84% 4.9%)",
+              "--sidebar-foreground": "hsl(210 40% 98%)",
+              "--sidebar-primary": "hsl(220 70% 50%)",
+              "--sidebar-primary-foreground": "hsl(210 40% 98%)",
+              "--sidebar-accent": "hsl(217.2 32.6% 17.5%)",
+              "--sidebar-accent-foreground": "hsl(210 40% 98%)",
+              "--sidebar-border": "hsl(217.2 32.6% 17.5%)",
+              "--sidebar-ring": "hsl(212.7 26.8% 83.9%)",
+            }
+
+            const vars = isDark ? darkFallbackVars : lightFallbackVars
+            const targetEl = (clonedDoc.querySelector(".max-w-4xl") as HTMLElement) || (clonedDoc.body as HTMLElement)
+            Object.entries(vars).forEach(([k, v]) => {
+              targetEl.style.setProperty(k, v)
+            })
           } catch (e) {
             console.log("[v0] onclone inject fallback failed:", e)
           }
