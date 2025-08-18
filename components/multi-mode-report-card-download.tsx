@@ -1,5 +1,7 @@
 "use client"
 
+import "@/styles/legacy-theme.css"
+
 import type { StudentData } from "@/lib/data"
 import Image from "next/image"
 
@@ -162,7 +164,7 @@ export default function MultiModeReportCard({
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white">
+    <div className="legacy-theme w-full max-w-4xl mx-auto bg-white">
       {/* A4 Aspect Ratio Container */}
       <div
         className="relative w-full mx-auto bg-white shadow-lg"
