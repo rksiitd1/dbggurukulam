@@ -368,3 +368,25 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* html2canvas compatibility: force hex/RGB colors under legacy-theme to avoid OKLCH parsing errors */
+.legacy-theme .bg-yellow-50 { background-color: #fefce8 !important; }
+.legacy-theme .bg-orange-100 { background-color: #ffedd5 !important; }
+.legacy-theme .bg-orange-200 { background-color: #fed7aa !important; }
+.legacy-theme .bg-blue-50 { background-color: #eff6ff !important; }
+.legacy-theme .bg-blue-100 { background-color: #dbeafe !important; }
+.legacy-theme .bg-blue-800 { background-color: #1e40af !important; }
+.legacy-theme .bg-gray-100 { background-color: #f3f4f6 !important; }
+.legacy-theme .bg-white { background-color: #ffffff !important; }
+
+.legacy-theme .text-blue-900 { color: #1e3a8a !important; }
+.legacy-theme .text-yellow-700 { color: #a16207 !important; }
+.legacy-theme .text-yellow-800 { color: #854d0e !important; }
+.legacy-theme .text-green-700 { color: #15803d !important; }
+.legacy-theme .text-white { color: #ffffff !important; }
+
+.legacy-theme .border-gray-200 { border-color: #e5e7eb !important; }
+.legacy-theme .border-gray-400 { border-color: #9ca3af !important; }
+.legacy-theme .border-orange-300 { border-color: #fdba74 !important; }
+
+.legacy-theme .bg-orange-500 { background-color: #f97316 !important; }
