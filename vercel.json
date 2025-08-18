@@ -1,0 +1,3 @@
+{
+  "buildCommand": "npm rebuild @tailwindcss/oxide lightningcss || true && npm run build"
+}
