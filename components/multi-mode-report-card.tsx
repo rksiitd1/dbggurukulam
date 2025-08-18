@@ -1,4 +1,5 @@
 import type { StudentData } from "@/lib/data"
+import "@/styles/legacy-theme.css"
 import Image from "next/image"
 
 // Import the new data structure
@@ -161,7 +162,7 @@ export default function MultiModeReportCard({
 
   return (
     <div
-      className="w-full max-w-4xl mx-auto p-1 sm:p-4 print:p-2 bg-white relative print:max-w-none print:mx-0 overflow-x-hidden"
+      className="legacy-theme w-full max-w-4xl mx-auto p-1 sm:p-4 print:p-2 bg-white relative print:max-w-none print:mx-0 overflow-x-hidden"
       style={{ fontFamily: "serif" }}
     >
       {/* Decorative Border */}

@@ -96,7 +96,9 @@ export default function ResultActions({
         }, 2000)
       } else {
         console.log("[v0] Using desktop component")
-        reportCard = document.querySelector(".max-w-4xl") as HTMLElement
+        reportCard =
+          (document.querySelector(".legacy-theme .max-w-4xl") as HTMLElement) ||
+          (document.querySelector(".max-w-4xl") as HTMLElement)
       }
 
       if (!reportCard) {
@@ -273,7 +275,9 @@ export default function ResultActions({
         }, 2000)
       } else {
         console.log("[v0] Using desktop PNG component")
-        reportCard = document.querySelector(".max-w-4xl") as HTMLElement
+        reportCard =
+          (document.querySelector(".legacy-theme .max-w-4xl") as HTMLElement) ||
+          (document.querySelector(".max-w-4xl") as HTMLElement)
       }
 
       if (!reportCard) {
