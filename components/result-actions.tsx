@@ -113,6 +113,51 @@ export default function ResultActions({
         backgroundColor: "#ffffff",
         width: reportCard.scrollWidth,
         height: reportCard.scrollHeight,
+        onclone: (clonedDoc: Document) => {
+          try {
+            const style = clonedDoc.createElement("style")
+            style.setAttribute("data-h2c-fallback", "true")
+            style.textContent = `
+              :root, .dark {
+                --background: #ffffff;
+                --foreground: #111111;
+                --card: #ffffff;
+                --card-foreground: #111111;
+                --popover: #ffffff;
+                --popover-foreground: #111111;
+                --primary: #111111;
+                --primary-foreground: #f5f5f5;
+                --secondary: #f7f7f7;
+                --secondary-foreground: #111111;
+                --muted: #f7f7f7;
+                --muted-foreground: #6b7280;
+                --accent: #f7f7f7;
+                --accent-foreground: #111111;
+                --destructive: #ef4444;
+                --destructive-foreground: #ffffff;
+                --border: #e5e5e5;
+                --input: #e5e5e5;
+                --ring: #9ca3af;
+                --chart-1: #7c3aed;
+                --chart-2: #0ea5e9;
+                --chart-3: #f59e0b;
+                --chart-4: #10b981;
+                --chart-5: #ef4444;
+                --sidebar: #f9fafb;
+                --sidebar-foreground: #111111;
+                --sidebar-primary: #111111;
+                --sidebar-primary-foreground: #f5f5f5;
+                --sidebar-accent: #f3f4f6;
+                --sidebar-accent-foreground: #111111;
+                --sidebar-border: #e5e7eb;
+                --sidebar-ring: #9ca3af;
+              }
+            `
+            clonedDoc.head.appendChild(style)
+          } catch (e) {
+            console.log("[v0] onclone inject fallback failed:", e)
+          }
+        },
       })
 
       const imgData = canvas.toDataURL("image/png")
@@ -224,6 +269,51 @@ export default function ResultActions({
         backgroundColor: "#ffffff",
         width: reportCard.scrollWidth,
         height: reportCard.scrollHeight,
+        onclone: (clonedDoc: Document) => {
+          try {
+            const style = clonedDoc.createElement("style")
+            style.setAttribute("data-h2c-fallback", "true")
+            style.textContent = `
+              :root, .dark {
+                --background: #ffffff;
+                --foreground: #111111;
+                --card: #ffffff;
+                --card-foreground: #111111;
+                --popover: #ffffff;
+                --popover-foreground: #111111;
+                --primary: #111111;
+                --primary-foreground: #f5f5f5;
+                --secondary: #f7f7f7;
+                --secondary-foreground: #111111;
+                --muted: #f7f7f7;
+                --muted-foreground: #6b7280;
+                --accent: #f7f7f7;
+                --accent-foreground: #111111;
+                --destructive: #ef4444;
+                --destructive-foreground: #ffffff;
+                --border: #e5e5e5;
+                --input: #e5e5e5;
+                --ring: #9ca3af;
+                --chart-1: #7c3aed;
+                --chart-2: #0ea5e9;
+                --chart-3: #f59e0b;
+                --chart-4: #10b981;
+                --chart-5: #ef4444;
+                --sidebar: #f9fafb;
+                --sidebar-foreground: #111111;
+                --sidebar-primary: #111111;
+                --sidebar-primary-foreground: #f5f5f5;
+                --sidebar-accent: #f3f4f6;
+                --sidebar-accent-foreground: #111111;
+                --sidebar-border: #e5e7eb;
+                --sidebar-ring: #9ca3af;
+              }
+            `
+            clonedDoc.head.appendChild(style)
+          } catch (e) {
+            console.log("[v0] onclone inject fallback failed:", e)
+          }
+        },
       })
 
       canvas.toBlob(
