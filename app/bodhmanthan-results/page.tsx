@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dbggurukulam.com"),
+  metadataBase: new URL("https://results.dbggurukulam.com"),
   title: "DBG Gurukulam – Bodha Manthan Results",
   description:
     "View Bodha Manthan examination results at DBG Gurukulam.",
@@ -24,14 +24,9 @@ export const metadata: Metadata = {
       "Access Bodha Manthan results and track academic performance at DBG Gurukulam.",
     type: "website",
     siteName: "DBG Gurukulam",
-    url: "https://dbggurukulam.com/bodhmanthan-results",
+    url: "https://results.dbggurukulam.com/bodhmanthan-results",
     images: [
-      {
-        url: "/DBGlogo.png",
-        width: 512,
-        height: 512,
-        alt: "DBG Gurukulam Logo",
-      },
+      "https://results.dbggurukulam.com/OG-image.png",
     ],
   },
   twitter: {
@@ -39,7 +34,7 @@ export const metadata: Metadata = {
     title: "DBG Gurukulam – Bodha Manthan Results",
     description:
       "Access Bodha Manthan results and track academic performance at DBG Gurukulam.",
-    images: ["/DBGlogo.png"],
+    images: ["https://results.dbggurukulam.com/OG-image.png"],
   },
   robots: {
     index: true,
@@ -48,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 const RESULTS_URL =
-  "https://dbggurukulam.com/results/2025-26/bodha-manthan/First%20Term%20-%20July%202025";
+  "https://results.dbggurukulam.com/results/2025-26/bodha-manthan/First%20Term%20-%20July%202025";
 
 export default function BodhaManthanResultsLanding() {
   return (
