@@ -136,20 +136,21 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                "The Mission (About)",
-                "The Gurukulam (N–8)",
-                "Shri Classes (9–12)",
-                "The Jnana Kosha",
-                "Admissions",
-                "Contact Us",
-              ].map((link) => (
-                <li key={link}>
+                { label: "The Mission (About)", href: "#mission" },
+                { label: "The Gurukulam (N–8)", href: "#gurukulam" },
+                { label: "Shri Classes (9–12)", href: "#shri-classes" },
+                { label: "The Jnana Kosha", href: "#jnana-kosha" },
+                { label: "Admissions", href: "#admissions" },
+                { label: "Results", href: "/results" },
+                { label: "Contact Us", href: "#contact" },
+              ].map(({ label, href }) => (
+                <li key={label}>
                   <a
-                    href="#"
+                    href={href}
                     className="font-scribe text-manuscript/80 hover:text-marigold-gold transition-all duration-300 text-lg group flex items-center gap-2"
                   >
                     <div className="w-1 h-1 bg-peacock-teal rounded-full group-hover:w-2 group-hover:bg-marigold-gold transition-all duration-300" />
-                    {link}
+                    {label}
                   </a>
                 </li>
               ))}

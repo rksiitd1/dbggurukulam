@@ -55,10 +55,10 @@ export function Header() {
               The Jnana Kosha
             </a>
             <a
-              href="#contribute"
+              href="/results"
               className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
             >
-              Contribute
+              Results
             </a>
           </nav>
 
@@ -113,11 +113,11 @@ export function Header() {
                 The Jnana Kosha
               </a>
               <a
-                href="#contribute"
+                href="/results"
                 className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contribute
+                Results
               </a>
               <div className="px-3 py-2">
                 <Button className="w-full bg-marigold-gold hover:bg-marigold-gold/90 text-temple-stone font-semibold px-6 py-3 rounded-lg transition-all duration-300">
