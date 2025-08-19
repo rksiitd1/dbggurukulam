@@ -27,7 +27,13 @@ export const metadata: Metadata = {
     siteName: "DBG Gurukulam",
     url: "https://dbggurukulam.com/bodhmanthan-results",
     images: [
-      "https://dbggurukulam.com/OG-image.png",
+      {
+        url: "https://dbggurukulam.com/OG-image.png",
+        width: 1280,
+        height: 720,
+        alt: "DBG Gurukulam – Bodha Manthan Results",
+        type: "image/png",
+      },
     ],
   },
   twitter: {
