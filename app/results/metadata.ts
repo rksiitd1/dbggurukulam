@@ -2,15 +2,15 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dbggurukulam.com'),
-  title: 'DBG Gurukulam - Student Results Portal',
-  description: 'Access and view student examination results for DBG Gurukulam. Check your academic performance and progress.',
+  title: 'DBG Gurukulam Results',
+  description: 'View DBG Gurukulam (Raghopur, Supaul) student exam results — Bodha Manthan, Jigyāsa Anveshan, Pragya Siddhi — by academic year, class, and roll no.',
   keywords: ['DBG Gurukulam', 'student results', 'exam results', 'academic performance', 'education'],
   alternates: {
     canonical: '/results',
   },
   openGraph: {
-    title: 'DBG Gurukulam - Student Results Portal',
-    description: "View and track your academic progress with DBG Gurukulam's comprehensive results portal.",
+    title: 'DBG Gurukulam Results',
+    description: 'View DBG Gurukulam (Raghopur, Supaul) student exam results — Bodha Manthan, Jigyāsa Anveshan, Pragya Siddhi — by academic year, class, and roll no.',
     type: 'website',
     locale: 'en_IN',
     siteName: 'DBG Gurukulam',
@@ -20,15 +20,15 @@ export const metadata: Metadata = {
         url: 'https://dbggurukulam.com/OG-image.png',
         width: 1280,
         height: 720,
-        alt: 'DBG Gurukulam – Results Portal',
+        alt: 'DBG Gurukulam – Results',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DBG Gurukulam - Student Results Portal',
-    description: 'Access your academic results and track your progress at DBG Gurukulam.',
+    title: 'DBG Gurukulam Results',
+    description: 'View DBG Gurukulam (Raghopur, Supaul) student exam results — Bodha Manthan, Jigyāsa Anveshan, Pragya Siddhi — by academic year, class, and roll no.',
     images: ['https://dbggurukulam.com/OG-image.png'],
   },
   robots: {
