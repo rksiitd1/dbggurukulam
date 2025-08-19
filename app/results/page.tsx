@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ArrowRight, Search, BarChart3, Award as Trophy, ChevronRight, Info, X } from "lucide-react"
 import { academicYears, getAvailableExamPeriods } from "@/lib/data"
 import { Header } from "@/components/header"
+import BodhaManthanResults from "@/components/bodhmanthan-results"
 
 // Apple-inspired color palette
 const colors = {
@@ -288,6 +289,7 @@ export default function ResultsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
+      <BodhaManthanResults />
 
       {/* Main Content */}
       <div className="px-4 py-6 pb-32 max-w-4xl mx-auto lg:px-6">
