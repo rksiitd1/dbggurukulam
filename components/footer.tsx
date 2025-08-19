@@ -84,7 +84,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* School Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-4 mb-6">
+            <a href="/" className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 relative group flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-marigold-gold/20 to-peacock-teal/20 rounded-full blur-sm group-hover:blur-none transition-all duration-500" />
                 <Image
@@ -136,6 +136,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
+                { label: "Home", href: "/" },
                 { label: "The Mission (About)", href: "#mission" },
                 { label: "The Gurukulam (N–8)", href: "#gurukulam" },
                 { label: "Shri Classes (9–12)", href: "#shri-classes" },
@@ -212,9 +213,17 @@ export function Footer() {
           <div className="pt-8 mt-8">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-6 w-full">
               <div className="font-scribe text-manuscript/60 text-base text-center sm:text-left">
-                © 2025 Divya Bihar Global Gurukulam. All rights reserved.
+                2025 Divya Bihar Global Gurukulam. All rights reserved.
               </div>
               <div className="flex gap-8 text-base">
+                <a
+                  href="https://divyabiharmission.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-manuscript/80 hover:text-marigold-gold transition-colors duration-300"
+                >
+                  The Mission
+                </a>
                 <a
                   href="#"
                   className="font-scribe text-manuscript/60 hover:text-marigold-gold transition-colors duration-300 relative group"
