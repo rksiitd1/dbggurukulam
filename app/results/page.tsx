@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowRight, Home, Search, BarChart3, Award as Trophy, ChevronRight, Info, X } from "lucide-react"
+import { ArrowRight, Search, BarChart3, Award as Trophy, ChevronRight, Info, X } from "lucide-react"
 import { academicYears, getAvailableExamPeriods } from "@/lib/data"
+import { Header } from "@/components/header"
 
 // Apple-inspired color palette
 const colors = {
@@ -286,13 +287,7 @@ export default function ResultsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Status Bar */}
-      <div className="h-12 bg-white border-b border-gray-100 flex items-center justify-between px-4">
-        <span className="font-medium">Gurukulam</span>
-        <Link href="/" className="p-2 -mr-2">
-          <Home className="w-5 h-5 text-blue-500" />
-        </Link>
-      </div>
+      <Header />
 
       {/* Main Content */}
       <div className="px-4 py-6 pb-32 max-w-4xl mx-auto lg:px-6">
