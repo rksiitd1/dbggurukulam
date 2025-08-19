@@ -1,0 +1,5 @@
+# Robots.txt for dbggurukulam.com
+User-agent: *
+Allow: /
+
+Sitemap: https://dbggurukulam.com/sitemap.xml

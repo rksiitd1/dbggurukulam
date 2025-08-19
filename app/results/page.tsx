@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import Script from "next/script"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -290,6 +291,22 @@ export default function ResultsPage() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <BodhaManthanResults />
+      <Script id="results-ld-json" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "DBG Gurukulam Results",
+          url: "https://dbggurukulam.com/results",
+          description: "Access and view student examination results for DBG Gurukulam.",
+          breadcrumb: {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://dbggurukulam.com/" },
+              { "@type": "ListItem", position: 2, name: "Results", item: "https://dbggurukulam.com/results" }
+            ]
+          }
+        })}
+      </Script>
 
       {/* Main Content */}
       <div className="px-4 py-6 pb-32 max-w-4xl mx-auto lg:px-6">
@@ -299,7 +316,7 @@ export default function ResultsPage() {
           animate="visible"
           variants={fadeIn}
         >
-          <h1 className={`${title1} text-gray-900 mb-2`}>Results</h1>
+          <h1 className={`${title1} text-gray-900 mb-2`}>DBG Gurukulam Results</h1>
           <p className={`${callout} text-gray-600`}>Check your examination results by selecting the details below</p>
         </motion.div>
 
