@@ -31,14 +31,6 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <a
-              href="https://divyabiharmission.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
-            >
-              The Mission
-            </a>
-            <a
               href="#gurukulam"
               className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
             >
@@ -61,6 +53,14 @@ export function Header() {
               className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
             >
               Results
+            </a>
+            <a
+              href="https://divyabiharmission.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
+            >
+              The Mission
             </a>
           </nav>
 
@@ -94,15 +94,6 @@ export function Header() {
                 Home
               </a>
               <a
-                href="https://divyabiharmission.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                The Mission
-              </a>
-              <a
                 href="#gurukulam"
                 className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
                 onClick={() => setIsMenuOpen(false)}
@@ -129,6 +120,15 @@ export function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Results
+              </a>
+              <a
+                href="https://divyabiharmission.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                The Mission
               </a>
               <div className="px-3 py-2">
                 <Button className="w-full bg-marigold-gold hover:bg-marigold-gold/90 text-temple-stone font-semibold px-6 py-3 rounded-lg transition-all duration-300">
