@@ -101,7 +101,7 @@ export function Footer() {
                 </h3>
                 <div className="w-32 h-0.5 bg-gradient-to-r from-marigold-gold to-peacock-teal rounded-full" />
               </div>
-            </div>
+            </a>
             <p className="font-scribe text-manuscript/80 mb-8 leading-relaxed text-lg max-w-2xl">
               Where Ancient Soul Meets Modern Mind. Nurturing young minds through the timeless wisdom of our heritage
               while preparing them for tomorrow's challenges.
