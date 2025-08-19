@@ -2,6 +2,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dbggurukulam.com"),
@@ -54,7 +55,9 @@ const RESULTS_URL =
 
 export default function BodhaManthanResultsLanding() {
   return (
-    <main className="relative min-h-[70vh] flex items-center justify-center px-4 py-12">
+    <>
+      <Header />
+      <main className="relative min-h-[70vh] flex items-center justify-center px-4 py-12">
       {/* Soft background gradient */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-orange-50 via-amber-50 to-green-50" />
 
@@ -111,6 +114,7 @@ export default function BodhaManthanResultsLanding() {
           DBG Gurukulam • Education with Yogic Values
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }
