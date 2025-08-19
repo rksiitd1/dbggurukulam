@@ -31,19 +31,19 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <a
-              href="#gurukulam"
+              href="/"
               className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
             >
               The Gurukulam (N–8)
             </a>
             <a
-              href="#shri-classes"
+              href="/#shri-classes"
               className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
             >
               Shri Classes (9–12)
             </a>
             <a
-              href="#jnana-kosha"
+              href="/#jnana-kosha"
               className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
             >
               The Jnana Kosha
@@ -94,21 +94,21 @@ export function Header() {
                 Home
               </a>
               <a
-                href="#gurukulam"
+                href="/"
                 className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 The Gurukulam (N–8)
               </a>
               <a
-                href="#shri-classes"
+                href="/#shri-classes"
                 className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Shri Classes (9–12)
               </a>
               <a
-                href="#jnana-kosha"
+                href="/#jnana-kosha"
                 className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
