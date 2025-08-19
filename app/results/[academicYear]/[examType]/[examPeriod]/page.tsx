@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Search, AlertCircle, Users, BookOpen, Shield, ChevronRight, X as XIcon } from "lucide-react"
 import { classes, findStudent, getClassStats } from "@/lib/data"
+import { Header } from "@/components/header"
 
 // Typography tokens (aligned with main results page)
 const largeTitle = "text-3xl font-semibold tracking-tight"
@@ -228,6 +229,7 @@ export default function StudentSearchPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-green-50">
+      <Header />
       {/* Header */}
       <div className="relative overflow-hidden bg-gradient-to-r from-orange-100 to-green-100">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
