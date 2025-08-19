@@ -13,7 +13,7 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <a href="/" className="flex-shrink-0">
             <div className="flex items-center space-x-3">
               <div className="w-16 h-16 relative">
                 <Image src="/logo.svg" alt="DBG Gurukulam Logo" width={64} height={64} className="object-contain" />
@@ -26,12 +26,14 @@ export function Header() {
                 </h1>
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <a
-              href="#mission"
+              href="https://divyabiharmission.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
             >
               The Mission
@@ -85,7 +87,16 @@ export function Header() {
           <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-manuscript border-t border-border">
               <a
-                href="#mission"
+                href="/"
+                className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </a>
+              <a
+                href="https://divyabiharmission.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block px-3 py-2 text-scribe text-temple-stone hover:text-peacock-teal transition-colors duration-300 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
