@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
+import { Header } from "@/components/header"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Search, AlertCircle, Users, BookOpen, Shield, ChevronRight, X as XIcon } from "lucide-react"
@@ -250,6 +251,7 @@ export default function StudentSearchPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-green-50">
+      <Header />
       {/* Header */}
       <div className="relative overflow-hidden bg-gradient-to-r from-orange-100 to-green-100">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
