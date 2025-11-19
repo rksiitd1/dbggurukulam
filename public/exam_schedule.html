@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBG Gurukulam Exam Schedule</title>
+    <style>
+        /* Basic Page Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Main Container for the Notice */
+        .notice-container {
+            width: 100%;
+            max-width: 800px;
+            border: 2px solid #000;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .school-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .notice-title {
+            font-size: 22px;
+            font-weight: normal;
+            margin: 5px 0 0 0;
+        }
+
+        /* General Information Box */
+        .info-box {
+            border: 1px solid #333;
+            padding: 15px;
+            margin-bottom: 25px;
+            background-color: #f9f9f9;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+        }
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .info-box li {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .info-box li strong {
+            display: inline-block;
+            width: 120px; /* Aligns the text */
+        }
+        
+        /* Class Section Styles */
+        .class-schedule {
+            margin-bottom: 30px;
+        }
+        .class-title {
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2; /* Light grey for headers */
+            font-weight: bold;
+            text-align: center;
+        }
+        td {
+            text-align: center;
+        }
+        .subject {
+            font-weight: 500;
+        }
+        .exam-type {
+            font-size: 12px;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="notice-container">
+        <div class="header">
+            <h1 class="school-name">DBG Gurukulam</h1>
+            <h2 class="notice-title">Schedule for Bodh Manthan II</h2>
+        </div>
+
+        <div class="info-box">
+            <h3>General Information</h3>
+            <ul>
+                <li><strong>Exam Type:</strong> Oral Exams (Nov 18 & 19), Written Exams (Nov 20-24)</li>
+                <li><strong>1st Sitting:</strong> 8:30 AM – 10:30 AM</li>
+                <li><strong>2nd Sitting:</strong> 11:00 AM – 1:00 PM</li>
+            </ul>
+        </div>
+
+        <!-- Nursery, LKG & UKG -->
+        <div class="class-schedule">
+            <h3 class="class-title">Nursery, LKG & UKG</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>1st Sitting (8:30 AM - 10:30 AM)</th>
+                        <th>2nd Sitting (11:00 AM - 1:00 PM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>20 Nov</td>
+                        <td>Thursday</td>
+                        <td class="subject">Maths <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>21 Nov</td>
+                        <td>Friday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>22 Nov</td>
+                        <td>Saturday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>24 Nov</td>
+                        <td>Monday</td>
+                        <td class="subject">Drawing <br><span class="exam-type">(Written)</span></td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 1 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 1</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>1st Sitting (8:30 AM - 10:30 AM)</th>
+                        <th>2nd Sitting (11:00 AM - 1:00 PM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>18 Nov</td>
+                        <td>Tuesday</td>
+                        <td class="subject">English <br><span class="exam-type">(Oral)</span></td>
+                        <td class="subject">Math <br><span class="exam-type">(Oral)</span></td>
+                    </tr>
+                     <tr>
+                        <td>19 Nov</td>
+                        <td>Wednesday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Oral)</span></td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Oral)</span></td>
+                    </tr>
+                    <tr>
+                        <td>20 Nov</td>
+                        <td>Thursday</td>
+                        <td class="subject">Maths <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>21 Nov</td>
+                        <td>Friday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>22 Nov</td>
+                        <td>Saturday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>24 Nov</td>
+                        <td>Monday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                        <td class="subject">Drawing <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 4 & 5 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 4 & Class 5</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>1st Sitting (8:30 AM - 10:30 AM)</th>
+                        <th>2nd Sitting (11:00 AM - 1:00 PM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>18 Nov</td>
+                        <td>Tuesday</td>
+                        <td class="subject">English <br><span class="exam-type">(Oral)</span></td>
+                        <td class="subject">Math <br><span class="exam-type">(Oral)</span></td>
+                    </tr>
+                     <tr>
+                        <td>19 Nov</td>
+                        <td>Wednesday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Oral)</span></td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Oral)</span></td>
+                    </tr>
+                    <tr>
+                        <td>20 Nov</td>
+                        <td>Thursday</td>
+                        <td class="subject">Maths <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>21 Nov</td>
+                        <td>Friday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>22 Nov</td>
+                        <td>Saturday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>24 Nov</td>
+                        <td>Monday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                        <td class="subject">Reasoning <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 7 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 7</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>1st Sitting (8:30 AM - 10:30 AM)</th>
+                        <th>2nd Sitting (11:00 AM - 1:00 PM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>18 Nov</td>
+                        <td>Tuesday</td>
+                        <td class="subject">English <br><span class="exam-type">(Oral)</span></td>
+                        <td class="subject">Social + Hindi <br><span class="exam-type">(Oral)</span></td>
+                    </tr>
+                     <tr>
+                        <td>19 Nov</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Oral)</span></td>
+                        <td class="subject">Science <br><span class="exam-type">(Oral)</span></td>
+                    </tr>
+                    <tr>
+                        <td>20 Nov</td>
+                        <td>Thursday</td>
+                        <td class="subject">Maths <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>21 Nov</td>
+                        <td>Friday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>22 Nov</td>
+                        <td>Saturday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>24 Nov</td>
+                        <td>Monday</td>
+                        <td class="subject">Social <br><span class="exam-type">(Written)</span></td>
+                        <td class="subject">Science <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>Wishing all students the very best of luck!</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
