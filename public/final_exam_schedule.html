@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBG Gurukulam Exam Schedule</title>
+    <style>
+        /* Basic Page Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Main Container for the Notice */
+        .notice-container {
+            width: 100%;
+            max-width: 800px;
+            border: 2px solid #2c3e50;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+            color: #fff;
+            margin-left: -25px;
+            margin-right: -25px;
+            margin-top: -25px;
+            padding: 20px 25px 15px;
+            border-radius: 6px 6px 0 0;
+        }
+        .header .school-name,
+        .header .notice-title {
+            color: #fff;
+        }
+        .school-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .notice-title {
+            font-size: 22px;
+            font-weight: normal;
+            margin: 5px 0 0 0;
+        }
+
+        /* General Information Box */
+        .info-box {
+            border: 1px solid #3498db;
+            padding: 15px;
+            margin-bottom: 25px;
+            background: linear-gradient(180deg, #ebf5fb 0%, #d6eaf8 100%);
+            border-radius: 6px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 1px solid #3498db;
+            padding-bottom: 8px;
+            color: #1a5276;
+        }
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .info-box li {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .info-box li strong {
+            display: inline-block;
+            width: 120px; /* Aligns the text */
+        }
+        
+        /* Class Section Styles */
+        .class-schedule {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        .class-title {
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid rgba(0,0,0,0.15);
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            font-weight: bold;
+            text-align: center;
+        }
+        td {
+            text-align: center;
+        }
+        .subject {
+            font-weight: 500;
+        }
+        .exam-type {
+            font-size: 12px;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Per-class table colours (Nursery → Class 8) */
+        .class-schedule:nth-child(3) { background: #fce4ec; }
+        .class-schedule:nth-child(3) .class-title { color: #880e4f; border-bottom-color: #ad1457; }
+        .class-schedule:nth-child(3) th { background: #f8bbd0; color: #4a148c; }
+        .class-schedule:nth-child(3) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(3) tbody tr:nth-child(even) { background: #fce4ec; }
+
+        .class-schedule:nth-child(4) { background: #e8f5e9; }
+        .class-schedule:nth-child(4) .class-title { color: #1b5e20; border-bottom-color: #2e7d32; }
+        .class-schedule:nth-child(4) th { background: #c8e6c9; color: #1b5e20; }
+        .class-schedule:nth-child(4) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(4) tbody tr:nth-child(even) { background: #e8f5e9; }
+
+        .class-schedule:nth-child(5) { background: #e3f2fd; }
+        .class-schedule:nth-child(5) .class-title { color: #0d47a1; border-bottom-color: #1565c0; }
+        .class-schedule:nth-child(5) th { background: #bbdefb; color: #0d47a1; }
+        .class-schedule:nth-child(5) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(5) tbody tr:nth-child(even) { background: #e3f2fd; }
+
+        .class-schedule:nth-child(6) { background: #fff3e0; }
+        .class-schedule:nth-child(6) .class-title { color: #e65100; border-bottom-color: #ef6c00; }
+        .class-schedule:nth-child(6) th { background: #ffe0b2; color: #bf360c; }
+        .class-schedule:nth-child(6) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(6) tbody tr:nth-child(even) { background: #fff3e0; }
+
+        .class-schedule:nth-child(7) { background: #f3e5f5; }
+        .class-schedule:nth-child(7) .class-title { color: #4a148c; border-bottom-color: #6a1b9a; }
+        .class-schedule:nth-child(7) th { background: #e1bee7; color: #4a148c; }
+        .class-schedule:nth-child(7) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(7) tbody tr:nth-child(even) { background: #f3e5f5; }
+
+        .class-schedule:nth-child(8) { background: #e0f7fa; }
+        .class-schedule:nth-child(8) .class-title { color: #006064; border-bottom-color: #00838f; }
+        .class-schedule:nth-child(8) th { background: #b2ebf2; color: #006064; }
+        .class-schedule:nth-child(8) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(8) tbody tr:nth-child(even) { background: #e0f7fa; }
+
+        .class-schedule:nth-child(9) { background: #fff8e1; }
+        .class-schedule:nth-child(9) .class-title { color: #f57f17; border-bottom-color: #ff8f00; }
+        .class-schedule:nth-child(9) th { background: #ffecb3; color: #ff6f00; }
+        .class-schedule:nth-child(9) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(9) tbody tr:nth-child(even) { background: #fff8e1; }
+
+        .class-schedule:nth-child(10) { background: #fce4ec; }
+        .class-schedule:nth-child(10) .class-title { color: #880e4f; border-bottom-color: #ad1457; }
+        .class-schedule:nth-child(10) th { background: #f8bbd0; color: #4a148c; }
+        .class-schedule:nth-child(10) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(10) tbody tr:nth-child(even) { background: #fce4ec; }
+
+        .class-schedule:nth-child(11) { background: #e8eaf6; }
+        .class-schedule:nth-child(11) .class-title { color: #283593; border-bottom-color: #3949ab; }
+        .class-schedule:nth-child(11) th { background: #c5cae9; color: #283593; }
+        .class-schedule:nth-child(11) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(11) tbody tr:nth-child(even) { background: #e8eaf6; }
+
+        .class-schedule:nth-child(12) { background: #e0f2f1; }
+        .class-schedule:nth-child(12) .class-title { color: #00695c; border-bottom-color: #00897b; }
+        .class-schedule:nth-child(12) th { background: #b2dfdb; color: #00695c; }
+        .class-schedule:nth-child(12) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(12) tbody tr:nth-child(even) { background: #e0f2f1; }
+
+        .class-schedule:nth-child(13) { background: #fbe9e7; }
+        .class-schedule:nth-child(13) .class-title { color: #bf360c; border-bottom-color: #d84315; }
+        .class-schedule:nth-child(13) th { background: #ffccbc; color: #bf360c; }
+        .class-schedule:nth-child(13) tbody tr:nth-child(odd) { background: #fff; }
+        .class-schedule:nth-child(13) tbody tr:nth-child(even) { background: #fbe9e7; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px;
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+            color: #fff;
+            margin-left: -25px;
+            margin-right: -25px;
+            margin-bottom: -25px;
+            border-radius: 0 0 6px 6px;
+        }
+        .footer p { color: #fff; margin: 0; }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 0;
+                justify-content: flex-start;
+            }
+            .notice-container {
+                max-width: none;
+                width: 100%;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+            .header,
+            .info-box {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .class-schedule {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                break-after: page;
+                page-break-after: always;
+            }
+            .class-schedule:last-of-type {
+                break-after: auto;
+                page-break-after: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="notice-container">
+        <div class="header">
+            <h1 class="school-name">DBG Gurukulam</h1>
+            <h2 class="notice-title">Schedule for Pragya Samsiddhi</h2>
+        </div>
+
+        <div class="info-box">
+            <h3>General Information</h3>
+            <ul>
+                <li><strong>Exam Type:</strong> Oral Exams (Mar 6-9, as per class teachers), Written Exams (Mar 10-14)</li>
+                <li><strong>Exam Timing:</strong> 9:00 AM – 11:00 AM (Most classes)</li>
+                <li><strong>2nd Sitting (if applicable):</strong> 1:00 PM – 3:00 PM</li>
+            </ul>
+        </div>
+
+        <!-- Nursery -->
+        <div class="class-schedule">
+            <h3 class="class-title">Nursery</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Subject (9:00 AM - 11:00 AM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Drawing <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- LKG -->
+        <div class="class-schedule">
+            <h3 class="class-title">LKG</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Subject (9:00 AM - 11:00 AM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Drawing <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- UKG -->
+        <div class="class-schedule">
+            <h3 class="class-title">UKG</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Subject (9:00 AM - 11:00 AM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Drawing <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 1 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 1</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Subject (9:00 AM - 11:00 AM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Drawing <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 2 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 2</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Subject (9:00 AM - 11:00 AM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Drawing <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 3 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 3</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Subject (9:00 AM - 11:00 AM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Drawing <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 4 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 4</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Subject (9:00 AM - 11:00 AM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">GK <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Reasoning <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 5 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 5</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>1st Sitting (9:00 AM - 11:00 AM)</th>
+                        <th>2nd Sitting (1:00 PM - 3:00 PM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">Social <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Science <br><span class="exam-type">(Written)</span></td>
+                        <td class="subject">Reasoning <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 6 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 6</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>1st Sitting (9:00 AM - 11:00 AM)</th>
+                        <th>2nd Sitting (1:00 PM - 3:00 PM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">Social <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Science <br><span class="exam-type">(Written)</span></td>
+                        <td class="subject">Reasoning <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 7 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 7</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>1st Sitting (9:00 AM - 11:00 AM)</th>
+                        <th>2nd Sitting (1:00 PM - 3:00 PM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">Social <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Science <br><span class="exam-type">(Written)</span></td>
+                        <td class="subject">Reasoning <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class 8 -->
+        <div class="class-schedule">
+            <h3 class="class-title">Class 8</h3>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>1st Sitting (9:00 AM - 11:00 AM)</th>
+                        <th>2nd Sitting (1:00 PM - 3:00 PM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Mar</td>
+                        <td>Tuesday</td>
+                        <td class="subject">Math <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>11 Mar</td>
+                        <td>Wednesday</td>
+                        <td class="subject">Hindi <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>12 Mar</td>
+                        <td>Thursday</td>
+                        <td class="subject">English <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>13 Mar</td>
+                        <td>Friday</td>
+                        <td class="subject">Social <br><span class="exam-type">(Written)</span></td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>14 Mar</td>
+                        <td>Saturday</td>
+                        <td class="subject">Science <br><span class="exam-type">(Written)</span></td>
+                        <td class="subject">Reasoning <br><span class="exam-type">(Written)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>Wishing all students the very best of luck!</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
